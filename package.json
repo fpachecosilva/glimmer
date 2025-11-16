@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tw": "npx tailwindcss -c tailwind.config.js -i ./assets/tailwind.input.css -o ./assets/tailwind.output.css --watch"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18"
+  }
+}

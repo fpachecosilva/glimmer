@@ -27,7 +27,7 @@
     if text_width == '100%'
       echo 'text-block--align-' | append: block_settings.alignment
       if block_settings.max_width == 'none'
-        echo ' text-block--full-width '
+        echo ' text-block--full-width'
       endif
     endif
     if block_settings.type_preset == 'custom'
@@ -51,6 +51,7 @@
 {% capture attributes %}
   class="{{ class }} spacing-style text-block text-block--{{ block.id }} {{ block_settings.type_preset }}
     {{ text_block_classes }}
+    card-product-default
   "
 
   style="

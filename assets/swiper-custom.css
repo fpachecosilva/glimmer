@@ -1,0 +1,21 @@
+.swiper-pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 20px;
+}
+
+.swiper-pagination-bullet {
+	width: 8px;
+	height: 8px;
+	background: var(--custom-blue);
+	border: 1px solid var(--custom-blue);
+	opacity: 1;	
+}
+
+.swiper-pagination-bullet-active {
+	width: 14px;
+	height: 14px;
+	border: 1px solid var(--custom-blue);
+	background: #fff9e9;
+}

@@ -1,0 +1,158 @@
+{% assign sectionid = section.id | remove: '-' | remove: '__' | remove: '_' %}
+
+<div class="main-slider section-{{ section.id }} section section--page-width text-center">
+  <p class="title-block h4">{{ section.settings.title }}</p>
+  <p class="text-[#4D4D4D] text-[15px] md:text-[18px]">{{ section.settings.subtitle }}</p>
+
+  <div class="swiper {{ sectionid }} w-full py-[50px]">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide">
+          <p class="text-[24px]">{{ block.settings.title }}</p>
+          <p class="text-[16px]">{{ block.settings.subtitle }}</p>
+          <p class="text-[16px]">{{ block.settings.name }}</p>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-pagination p-0"></div>
+  </div>
+</div>
+
+{% style %}
+  .section-{{ section.id }} {
+  	padding-top: 0;
+  	padding-bottom: 0;
+  }
+
+   @media screen and (min-width: 750px) {
+   	.section-{{ section.id }} {
+   		padding-top: {{ section.settings.padding-block-start }}px;
+   		padding-bottom: {{ section.settings.padding-block-end }}px;
+   	}
+   }
+{% endstyle %}
+
+<script>
+  var swiper{{ sectionid }} = new Swiper(".{{ sectionid }}", {
+  	slidesPerView: 1,
+  	grabCursor: true,
+  	pagination: {
+  		el: ".swiper-pagination",
+  		clickable: true
+  	},
+  	speed: 500,
+  	loop: {{ section.settings.main_banner_loop }},
+  	{% if section.settings.main_banner_autoplay %}
+  	autoplay: {
+  		delay: {{ section.settings.main_banner_autoplay_time }}000
+  	},
+  	{% endif %}
+
+  	breakpoints: {
+  		750: {
+  			slidesPerView: 3
+  		}
+  	}
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Slider",
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Elas já estão vivendo o equilíbrio"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Histórias reais de quem descobriu que leveza e prazer podem andar de mãos dadas"
+    },
+    {
+      "type": "header",
+      "content": "Ajustes slider"
+    },
+    {
+      "type": "checkbox",
+      "id": "main_banner_loop",
+      "label": "Exibir banners em loop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "main_banner_autoplay",
+      "label": "Rodar slides automaticamente",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "main_banner_autoplay_time",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "s",
+      "label": "Tempo para mudança de slides",
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "depoimento",
+      "name": "Depoimento",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtítulo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nome"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slider"
+    }
+  ]
+}
+{% endschema %}

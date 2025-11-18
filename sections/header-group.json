@@ -11,6 +11,62 @@
   "type": "header",
   "name": "Header",
   "sections": {
+    "marquee_MwUfam": {
+      "type": "marquee",
+      "blocks": {
+        "text_LzxK33": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Entrega para todo o Brasil</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "uppercase",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "icon_EmeEyE": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "none",
+            "image_upload": "shopify://shop_images/Frame_1000006482.svg",
+            "width": 12,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_LzxK33",
+        "icon_EmeEyE"
+      ],
+      "name": "t:names.marquee_section",
+      "settings": {
+        "movement_direction": "normal",
+        "color_scheme": "",
+        "padding-block-start": 15,
+        "padding-block-end": 15,
+        "gap_between_elements": 24,
+        "bg_color": "#f697b4",
+        "text_color": "#bf1f41"
+      }
+    },
     "header_section": {
       "type": "header",
       "blocks": {
@@ -82,6 +138,7 @@
     }
   },
   "order": [
+    "marquee_MwUfam",
     "header_section"
   ]
 }

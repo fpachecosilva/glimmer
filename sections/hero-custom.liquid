@@ -1,0 +1,190 @@
+{% assign sectionid = section.id | remove: '-' | remove: '__' | remove: '_' %}
+
+{% style %}
+   #shopify-section-{{ section.id }} {
+  	display: block;
+   }
+  #shopify-section-{{ section.id }} .wrapper-texts h2 {
+  	color: {{ section.settings.title_color }};
+  }
+  #shopify-section-{{ section.id }} .wrapper-texts p {
+  	color: {{ section.settings.text_color }};
+  }
+{% endstyle %}
+
+<div class="swiper {{ sectionid }}">
+  <div class="swiper-wrapper relative">
+    {% for block in section.blocks %}
+      <div class="swiper-slide ">
+        <div class="wrapper-texts pt-[120px] pb-[60px] md:p-0 absolute md:left-1/2 md:-translate-x-1/2 w-full md:w-[1312px] h-full md:max-w-[1312px] flex flex-col justify-center">
+          <div class="max-w-full md:max-w-[600px] h-full flex flex-col md:block justify-between md:justify-center items-center md:items-start text-center md:!text-left">
+            <div class="wrapper-inside-txt">
+              {% if block.settings.title != blank %}
+                <h2 class="text-[32px] md:text-[58px] pb-[20px]">{{ block.settings.title }}</h2>
+              {% endif %}
+              {% if block.settings.subtitle != blank %}
+                <p class="mb-[30px] text-[15px] md:-text-[18px]">{{ block.settings.subtitle }}</p>
+              {% endif %}
+            </div>
+            {% if block.settings.text_btn %}
+              <a class="button" href="{{ block.settings.link_btn }}">{{ block.settings.text_btn }}</a>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if block.settings.desk_img %}
+          <a href="{{ block.settings.banner_link }}">
+            {{-
+              block.settings.desk_img
+              | image_url: width: 3840
+              | image_tag:
+                width: block.settings.desk_img.width,
+                widths: '240, 352, 832, 1200, 1600, 1920, 2560, 3840',
+                height: block.settings.desk_img.height,
+                class: '!hidden md:!block',
+                alt: shop.name,
+                sizes: '(min-width: 750px) calc(var(--logo-width)), 100vw'
+            -}}
+          </a>
+        {% endif %}
+        {% if block.settings.mob_img %}
+          <a href="{{ block.settings.banner_link }}">
+            {{-
+              block.settings.mob_img
+              | image_url: width: 3840
+              | image_tag:
+                width: block.settings.mob_img.width,
+                widths: '240, 352, 832, 1200, 1600, 1920, 2560, 3840',
+                height: block.settings.mob_img.height,
+                class: '!block md:!hidden h-screen object-cover',
+                alt: shop.name,
+                sizes: '(min-width: 750px) calc(var(--logo-width)), 100vw'
+            -}}
+          </a>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  <div class="swiper-pagination desk"></div>
+</div>
+
+<script>
+  var swiper{{ sectionid }} = new Swiper(".{{ sectionid }}", {
+  	pagination: {
+  		el: ".swiper-pagination",
+  		clickable: true,
+  	},
+  	navigation: {
+  		nextEl: ".swiper-next-{{ sectionid }}",
+  		prevEl: ".swiper-prev-{{ sectionid }}",
+  	},
+  	speed: 500,
+  	loop: {{ section.settings.main_banner_loop }},
+  	{% if section.settings.main_banner_autoplay %}
+  	autoplay: {
+  		delay: {{ section.settings.main_banner_autoplay_time }}000,
+  	},
+  	{% endif %}
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Banner principal",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "main_banner_loop",
+      "label": "Exibir banners em loop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "main_banner_autoplay",
+      "label": "Rodar slides automaticamente",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "main_banner_autoplay_time",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "s",
+      "label": "Tempo para mudança de slides",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Cores dos textos"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Cor do título",
+      "default": "#FFF9E9"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Cor do texto",
+      "default": "#FFF9E9"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "desk_img",
+          "label": "Imagem Desktop"
+        },
+        {
+          "type": "image_picker",
+          "id": "mob_img",
+          "label": "Imagem Mobile"
+        },
+        {
+          "type": "url",
+          "id": "banner_link",
+          "label": "Link do Banner"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Texto do título"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Texto do subtítulo"
+        },
+        {
+          "type": "text",
+          "id": "text_btn",
+          "label": "Texto do botão"
+        },
+        {
+          "type": "url",
+          "id": "link_btn",
+          "label": "Link do botão"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner principal",
+      "blocks": [
+        {
+          "type": "banner"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

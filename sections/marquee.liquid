@@ -1,5 +1,3 @@
-
-
 <script
   src="{{ 'marquee.js' | asset_url }}"
   type="module"
@@ -37,11 +35,19 @@
   </div>
 </marquee-component>
 
-{% stylesheet %}
+{% style %}
   marquee-component {
     display: block;
     width: 100%;
     overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} marquee-component {
+    background-color: {{ section.settings.bg_color }}!important;
+  }
+
+  #shopify-section-{{ section.id }} marquee-component .text-block > p {
+    color: {{ section.settings.text_color }};
   }
 
   .marquee__wrapper {
@@ -88,14 +94,11 @@
       transform: translate3d(calc(-50% - (var(--marquee-gap) / 2)), 0, 0);
     }
   }
-{% endstylesheet %}
+{% endstyle %}
 
 {% schema %}
 {
   "name": "t:names.marquee",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
   "blocks": [
     {
       "type": "text"
@@ -166,6 +169,18 @@
       "step": 1,
       "unit": "px",
       "default": 24
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Cor do fundo",
+      "default": "#F697B4"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Cor do texto",
+      "default": "#BF1F41"
     }
   ],
   "presets": [

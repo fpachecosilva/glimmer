@@ -838,11 +838,19 @@ h4,
   font-family: var(--font-h4--family);
   font-style: var(--font-h4--style);
   font-weight: var(--font-h4--weight);
-  font-size: var(--font-h4--size);
+  font-size: 26px;
   line-height: var(--font-h4--line-height);
   letter-spacing: var(--font-h4--letter-spacing);
   text-transform: var(--font-h4--case);
   color: var(--color, var(--font-h4-color));
+}
+
+@media screen and (min-width: 750px) {
+  h4,
+  .h4.h4,
+  .text-block.h4 > * {
+    font-size: 48px;
+  }
 }
 
 @media screen and (max-width: 1200px) {
@@ -1287,7 +1295,6 @@ results-list[initialized] {
 .button-secondary,
 button.shopify-payment-button__button--unbranded {
   --text-align: center;
-
   display: grid;
   align-content: center;
   text-decoration: none;
@@ -1298,7 +1305,8 @@ button.shopify-payment-button__button--unbranded {
   border: none;
   font-family: var(--font-paragraph--family);
   font-style: var(--font-paragraph--style);
-  font-size: var(--font-paragraph--size);
+  font-size: 14px;
+  font-weight: 500;
   line-height: var(--font-paragraph--line-height);
   margin-block: 0;
   transition: color var(--animation-speed) var(--animation-easing),
@@ -1309,6 +1317,24 @@ button.shopify-payment-button__button--unbranded {
   box-shadow: inset 0 0 0 var(--button-border-width) var(--button-border-color);
   padding-block: var(--button-padding-block);
   padding-inline: var(--button-padding-inline);
+}
+
+.product-grid__card .shopify-payment-button__button {
+  font-size: 8px;
+  padding: 8px 0;
+  height: 27px;
+  min-height: 27px!important;
+}
+
+@media screen and (min-width: 750px) {
+  .product-grid__card .shopify-payment-button__button {
+    min-height: 48px!important;
+    font-size: 14px;
+  }
+}
+
+.product-grid__card .product-form-buttons {
+  padding-top: 5px;
 }
 
 .button {
@@ -1587,6 +1613,11 @@ media-gallery.media-gallery--grid .media-gallery__grid .product-media-container 
 }
 
 @media screen and (min-width: 750px) {
+  .button,
+  .button-secondary,
+  button.shopify-payment-button__button--unbranded {
+    font-size: 16px;
+  }
   .product-media-container.constrain-height {
     --viewport-offset: var(--header-height, 100px);
     --constrained-min-height: 500px;
@@ -1805,6 +1836,14 @@ zoom-dialog dialog {
 .product-media {
   display: flex;
   flex: 1;
+}
+
+.product-media img {
+  transition: transform 0.3s ease;  
+}
+
+.product-media:hover img {
+  transform: rotate(-12.98deg);
 }
 
 /* If the product media is already providing an image cover, hide images provided by sibling deferred-media */
@@ -2108,6 +2147,10 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
   }
 }
 
+.price {
+  font-size: 8px;
+}
+
 .price,
 .compare-at-price,
 .unit-price {
@@ -2131,9 +2174,11 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) > *:not(.tax-note) {
 }
 
 .compare-at-price {
-  opacity: 0.4;
+  opacity: 1;
   text-decoration-line: line-through;
   text-decoration-thickness: 1.5px;
+  font-size: 8px;
+  color: #aaa79f;
 }
 
 .card-gallery {
@@ -2146,6 +2191,14 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) > *:not(.tax-note) {
     display: grid;
     will-change: margin, opacity;
     animation: elementSlideInTop var(--animation-speed) var(--animation-easing);
+  }
+
+  .price {
+    font-size: 15px;
+  }
+
+  .compare-at-price {
+    font-size: 15px;
   }
 }
 

@@ -22,9 +22,26 @@
 
 <div
   class="product-media"
-  style="--ratio: {{ media.aspect_ratio }}"
+  style="--ratio: {{ media.aspect_ratio }} "
   data-media-id="{{ media.id }}"
 >
+  {% if settings.show_effect_bg %}
+    <style>
+      [data-media-id='{{ media.id }}']::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, {{product.metafields.custom.cor_de_fundo_card_product | default: '#fcdcd9'}} 55%, transparent 55%);
+        filter: blur(20px);
+        z-index: -1;
+        border-radius: 50%;
+      }
+    </style>
+  {% endif %}
+
   {% liquid
     assign high_res_url = media.preview_image | image_url: width: 3840
     assign fetch_priority = 'auto'
@@ -32,7 +49,7 @@
       assign fetch_priority = 'high'
     endif
     assign focal_point_style = '--focal-point: ' | append: media.presentation.focal_point | append: ';'
-  %}
+  -%}
   {{
     media.preview_image
     | image_url: width: 3840
@@ -46,7 +63,7 @@
       data_max_resolution: high_res_url,
       fetchpriority: fetch_priority,
       style: focal_point_style
-  }}
+  -}}
 
   {% unless preview_image_only %}
     {%- case media.media_type -%}
@@ -133,7 +150,7 @@
   {% endunless %}
 </div>
 
-{% stylesheet %}
+{% style %}
   .product-media {
     aspect-ratio: var(--gallery-aspect-ratio, var(--ratio));
     min-height: 0;
@@ -171,17 +188,12 @@
     /* When the GRID is on the LEFT side */
     .product-information:not(.product-information--media-right) {
       /* One column */
-      .media-gallery--grid.media-gallery--extend:not(.media-gallery--two-column) .product-media > *,
-      /* Two column, small first image */
-      .media-gallery--grid.media-gallery--extend.media-gallery--two-column:not(.media-gallery--large-first-image)
-        .product-media-container:nth-of-type(odd)
-        .product-media
-        > *,
-      /* Two column, large first image */
-      .media-gallery--grid.media-gallery--extend.media-gallery--two-column.media-gallery--large-first-image
-        .product-media-container:is(:first-of-type, :nth-of-type(even))
-        .product-media
-        > * {
+      .media-gallery--grid.media-gallery--extend:not(.media-gallery--two-column) .product-media > *, /* Two column, small
+  first image */
+  .media-gallery--grid.media-gallery--extend.media-gallery--two-column:not(.media-gallery--large-first-image)
+  .product-media-container:nth-of-type(odd) .product-media > *, /* Two column, large first image */
+  .media-gallery--grid.media-gallery--extend.media-gallery--two-column.media-gallery--large-first-image
+  .product-media-container:is(:first-of-type, :nth-of-type(even)) .product-media > * {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
@@ -190,17 +202,12 @@
     /* When the GRID is on the RIGHT side */
     .product-information.product-information--media-right {
       /* One column */
-      .media-gallery--grid.media-gallery--extend:not(.media-gallery--two-column) .product-media > *,
-      /* Two column, small first image */
-      .media-gallery--grid.media-gallery--extend.media-gallery--two-column:not(.media-gallery--large-first-image)
-        .product-media-container:nth-of-type(even)
-        .product-media
-        > *,
-      /* Two column, large first image */
-      .media-gallery--grid.media-gallery--extend.media-gallery--two-column.media-gallery--large-first-image
-        .product-media-container:is(:first-of-type, :nth-of-type(odd))
-        .product-media
-        > * {
+      .media-gallery--grid.media-gallery--extend:not(.media-gallery--two-column) .product-media > *, /* Two column, small
+  first image */
+  .media-gallery--grid.media-gallery--extend.media-gallery--two-column:not(.media-gallery--large-first-image)
+  .product-media-container:nth-of-type(even) .product-media > *, /* Two column, large first image */
+  .media-gallery--grid.media-gallery--extend.media-gallery--two-column.media-gallery--large-first-image
+  .product-media-container:is(:first-of-type, :nth-of-type(odd)) .product-media > * {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
@@ -211,4 +218,4 @@
   ::view-transition-new(gallery-item) {
     animation-duration: 0ms;
   }
-{% endstylesheet %}
+{% endstyle %}

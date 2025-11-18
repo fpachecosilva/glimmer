@@ -9,25 +9,65 @@
  */
 {
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
+    "hero_custom_gzjUEr": {
+      "type": "hero-custom",
       "blocks": {
-        "text_YLPk4p": {
-          "type": "text",
-          "name": "t:names.heading",
+        "banner_7Qyq8Q": {
+          "type": "banner",
           "settings": {
-            "text": "<p>Prazer e bem-estar podem, sim, andar juntos.</p>",
+            "desk_img": "shopify://shop_images/hero1.jpg",
+            "mob_img": "shopify://shop_images/drink_1.jpg",
+            "banner_link": "",
+            "title": "Prazer e bem-estar podem, sim, andar juntos.",
+            "subtitle": "Descubra as bebidas que equilibram sabor, leveza e autenticidade. Viva o melhor dos dois mundos, sem culpa e com muito brilho",
+            "text_btn": "Quero viver esse equilíbrio",
+            "link_btn": "shopify://products/sweet-ginger"
+          }
+        },
+        "banner_iAztic": {
+          "type": "banner",
+          "settings": {
+            "desk_img": "shopify://shop_images/hero1.jpg",
+            "mob_img": "shopify://shop_images/drink_1.jpg",
+            "banner_link": "",
+            "title": "Slide 02",
+            "subtitle": "texto 2",
+            "text_btn": "Botão 2",
+            "link_btn": "shopify://products/sweet-ginger-3"
+          }
+        }
+      },
+      "block_order": [
+        "banner_7Qyq8Q",
+        "banner_iAztic"
+      ],
+      "name": "Hero custom",
+      "settings": {
+        "main_banner_loop": false,
+        "main_banner_autoplay": false,
+        "main_banner_autoplay_time": 5,
+        "title_color": "#fff9e9",
+        "text_color": "#fff9e9"
+      }
+    },
+    "marquee_tCV6RL": {
+      "type": "marquee",
+      "blocks": {
+        "text_WYxtMK": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Baixa caloria</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h2",
+            "type_preset": "custom",
             "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
+            "font_size": "1.5rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
             "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground-heading)",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
@@ -38,57 +78,400 @@
           },
           "blocks": {}
         },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
+        "icon_EYBMVc": {
+          "type": "icon",
+          "name": "t:names.icon",
           "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-secondary",
+            "icon": "price_tag",
+            "image_upload": "shopify://shop_images/Frame_1000006483.svg",
+            "width": 20,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "text_MAxpGG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Sem adição de açúcar</p>",
             "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1.5rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "icon_8dqypL": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "price_tag",
+            "image_upload": "shopify://shop_images/Frame_1000006483.svg",
+            "width": 20,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "text_wbYiBC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Ingredientes naturais</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1.5rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "icon_WntqTm": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "price_tag",
+            "image_upload": "shopify://shop_images/Frame_1000006483.svg",
+            "width": 20,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "text_Mzp9mW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Opções com e sem álcool</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1.5rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "icon_qCXNny": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "price_tag",
+            "image_upload": "shopify://shop_images/Frame_1000006483.svg",
+            "width": 20,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "text_9JJjRP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Sabor que encanta</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1.5rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "icon_iY9NeE": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "price_tag",
+            "image_upload": "shopify://shop_images/Frame_1000006483.svg",
+            "width": 20,
+            "link": "",
+            "open_in_new_tab": false
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
+        "text_WYxtMK",
+        "icon_EYBMVc",
+        "text_MAxpGG",
+        "icon_8dqypL",
+        "text_wbYiBC",
+        "icon_WntqTm",
+        "text_Mzp9mW",
+        "icon_qCXNny",
+        "text_9JJjRP",
+        "icon_iY9NeE"
       ],
-      "name": "t:names.hero",
+      "name": "t:names.marquee_section",
       "settings": {
-        "media_type_1": "image",
-        "image_1": "shopify://shop_images/hero1.jpg",
-        "media_type_2": "image",
-        "stack_media_on_mobile": false,
-        "custom_mobile_media": false,
-        "media_type_1_mobile": "image",
-        "media_type_2_mobile": "image",
-        "link": "",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 24,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-6",
-        "toggle_overlay": false,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
+        "movement_direction": "reverse",
+        "color_scheme": "",
+        "padding-block-start": 32,
+        "padding-block-end": 16,
+        "gap_between_elements": 24,
+        "bg_color": "#fff9e9",
+        "text_color": "#2b348b"
+      }
+    },
+    "marquee_r9M8RY": {
+      "type": "marquee",
+      "blocks": {
+        "text_UBKjEy": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Leve e refrescante</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1.5rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "icon_BndNpT": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "price_tag",
+            "image_upload": "shopify://shop_images/Frame_1000006483.svg",
+            "width": 20,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "text_8UcWaK": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Feita para o seu equilíbrio</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1.5rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "icon_mmYHGJ": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "price_tag",
+            "image_upload": "shopify://shop_images/Frame_1000006483.svg",
+            "width": 20,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "text_MRBaAw": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pronta pra qualquer momento</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1.5rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "icon_e3iq8e": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "price_tag",
+            "image_upload": "shopify://shop_images/Frame_1000006483.svg",
+            "width": 20,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "text_Brf3Pq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Bem-estar com prazer</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1.5rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "icon_YdXhiN": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "price_tag",
+            "image_upload": "shopify://shop_images/Frame_1000006483.svg",
+            "width": 20,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "text_CbX8br": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Brilhe do seu jeito</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1.5rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "icon_RFE74e": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "price_tag",
+            "image_upload": "shopify://shop_images/Frame_1000006483.svg",
+            "width": 20,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_UBKjEy",
+        "icon_BndNpT",
+        "text_8UcWaK",
+        "icon_mmYHGJ",
+        "text_MRBaAw",
+        "icon_e3iq8e",
+        "text_Brf3Pq",
+        "icon_YdXhiN",
+        "text_CbX8br",
+        "icon_RFE74e"
+      ],
+      "name": "t:names.marquee_section",
+      "settings": {
+        "movement_direction": "normal",
+        "color_scheme": "",
+        "padding-block-start": 0,
+        "padding-block-end": 0,
+        "gap_between_elements": 24,
+        "bg_color": "#fff9e9",
+        "text_color": "#2b348b"
       }
     },
     "product_list_fa6P9H": {
@@ -101,7 +484,7 @@
           "settings": {
             "content_direction": "row",
             "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
+            "horizontal_alignment": "center",
             "vertical_alignment": "flex-end",
             "align_baseline": true,
             "horizontal_alignment_flex_direction_column": "flex-start",
@@ -132,7 +515,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
+                "text": "<p>Bebidas que brilham do seu jeito<br/><br/></p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -214,7 +597,7 @@
               "settings": {
                 "width": "100%",
                 "max_width": "normal",
-                "alignment": "left",
+                "alignment": "center",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
@@ -237,12 +620,12 @@
               "type": "price",
               "name": "t:names.product_price",
               "settings": {
-                "show_sale_price_first": true,
+                "show_sale_price_first": false,
                 "show_installments": false,
                 "show_tax_info": false,
                 "type_preset": "h6",
                 "width": "100%",
-                "alignment": "left",
+                "alignment": "center",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -255,12 +638,51 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "buy_buttons_MX9aGT": {
+              "type": "buy-buttons",
+              "name": "t:names.product_buy_buttons",
+              "settings": {
+                "stacking": false,
+                "show_pickup_availability": true,
+                "gift_card_form": true,
+                "padding-block-start": 16,
+                "padding-block-end": 0,
+                "padding-inline-start": 24,
+                "padding-inline-end": 24
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "disabled": true,
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "disabled": true,
+                  "static": true,
+                  "settings": {
+                    "style_class": "button-secondary"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
             }
           },
           "block_order": [
             "product_card_gallery_677WP3",
             "product_title_YXxMTj",
-            "price_JQzVV4"
+            "price_JQzVV4",
+            "buy_buttons_MX9aGT"
           ]
         }
       },
@@ -281,13 +703,432 @@
         "horizontal_alignment": "flex-start",
         "gap": 28,
         "color_scheme": "scheme-1",
-        "padding-block-start": 48,
+        "padding-block-start": 96,
         "padding-block-end": 48
+      }
+    },
+    "main_bloco_duplo_essencia_MMyFXD": {
+      "type": "main-bloco-duplo-essencia",
+      "name": "Bloco duplo essência",
+      "settings": {
+        "padding-block-start": 48,
+        "padding-block-end": 100,
+        "bl1_bg": "#f697b4",
+        "bl1_img": "shopify://shop_images/Vector.png",
+        "title": "Mais do que uma marca, um movimento de equilíbrio",
+        "title_color": "#fffaf3",
+        "subtitle": "A Glimmer nasceu para celebrar o melhor do meio-termo, aquele espaço leve entre o prazer e o bem-estar. E por isso, criamos bebidas feitas com ingredientes naturais, design aspiracional e sabor de verdade.",
+        "subtitle_color": "#fffaf3",
+        "btn_text": "CONHEÇA A NOSSA ESSÊNCIA",
+        "btn_url": "",
+        "bl1_btn_color": "#bf1f41",
+        "bl1_btn_color_txt": "#ffffff",
+        "bl2_img": "shopify://shop_images/Frame_1272638184.jpg"
+      }
+    },
+    "main_equilibrio_NV7qqT": {
+      "type": "main-equilibrio",
+      "blocks": {
+        "block_ick6Hi": {
+          "type": "block",
+          "settings": {
+            "imagem": "shopify://shop_images/Flor_Glimmer_Laranja_com_G_1.svg",
+            "title": "Ingredientes naturais",
+            "subtitle": "Feita com extratos e frutas de verdade para um sabor leve e autêntico."
+          }
+        },
+        "block_47cX3k": {
+          "type": "block",
+          "settings": {
+            "imagem": "shopify://shop_images/Flor_Glimmer_Laranja_com_G_1_1.svg",
+            "title": "Ingredientes naturais",
+            "subtitle": "Feita com extratos e frutas de verdade para um sabor leve e autêntico."
+          }
+        },
+        "block_dir_tHW4Ty": {
+          "type": "block_dir",
+          "settings": {
+            "imagem": "shopify://shop_images/Flor_Glimmer_Laranja_com_G_1_2.svg",
+            "title": "Ingredientes naturais",
+            "subtitle": "Feita com extratos e frutas de verdade para um sabor leve e autêntico."
+          }
+        },
+        "block_dir_TxYzD8": {
+          "type": "block_dir",
+          "settings": {
+            "imagem": "shopify://shop_images/Flor_Glimmer_Laranja_com_G_1_3.svg",
+            "title": "Ingredientes naturais",
+            "subtitle": "Feita com extratos e frutas de verdade para um sabor leve e autêntico."
+          }
+        }
+      },
+      "block_order": [
+        "block_ick6Hi",
+        "block_47cX3k",
+        "block_dir_tHW4Ty",
+        "block_dir_TxYzD8"
+      ],
+      "name": "Equilibrio",
+      "settings": {
+        "padding-block-start": 0,
+        "padding-block-end": 100,
+        "title": "Pra quem busca equilíbrio sem abrir mão do prazer",
+        "btn_text": "COMPRAR AGORA",
+        "btn_url": "",
+        "bloco_central_img": "shopify://shop_images/9b2d311f545e6ecc9b2f8dd78c052ac77981c3a7.gif",
+        "central_btn_text": "COMPRAR AGORA",
+        "central_btn_url": ""
+      }
+    },
+    "main_videos_PM89yE": {
+      "type": "main-videos",
+      "blocks": {
+        "video_H378dx": {
+          "type": "video",
+          "name": "t:names.video",
+          "settings": {
+            "source": "uploaded",
+            "video": "shopify://files/videos/video-motociclista.mp4",
+            "video_url": "",
+            "video_autoplay": true,
+            "video_loop": true,
+            "alt": "",
+            "custom_width": 25,
+            "custom_width_mobile": 100,
+            "aspect_ratio": "auto",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 16,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "video_CxCxxq": {
+          "type": "video",
+          "name": "t:names.video",
+          "settings": {
+            "source": "uploaded",
+            "video": "shopify://files/videos/video-motociclista.mp4",
+            "video_url": "",
+            "video_autoplay": true,
+            "video_loop": true,
+            "alt": "",
+            "custom_width": 25,
+            "custom_width_mobile": 100,
+            "aspect_ratio": "auto",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 16,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "video_7jG4HE": {
+          "type": "video",
+          "name": "t:names.video",
+          "settings": {
+            "source": "uploaded",
+            "video": "shopify://files/videos/video-motociclista.mp4",
+            "video_url": "",
+            "video_autoplay": true,
+            "video_loop": true,
+            "alt": "",
+            "custom_width": 25,
+            "custom_width_mobile": 100,
+            "aspect_ratio": "auto",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 16,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "video_Cpt8jb": {
+          "type": "video",
+          "name": "t:names.video",
+          "settings": {
+            "source": "uploaded",
+            "video": "shopify://files/videos/video-motociclista.mp4",
+            "video_url": "",
+            "video_autoplay": true,
+            "video_loop": true,
+            "alt": "",
+            "custom_width": 25,
+            "custom_width_mobile": 100,
+            "aspect_ratio": "auto",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 16,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "video_H378dx",
+        "video_CxCxxq",
+        "video_7jG4HE",
+        "video_Cpt8jb"
+      ],
+      "name": "Vídeos",
+      "settings": {
+        "padding-block-start": 96,
+        "padding-block-end": 96,
+        "title": "Elas já encontraram o equilíbrio",
+        "subtitle": "Descubra o que nossa comunidade diz sobre viver o brilho Glimmer",
+        "btn_text": "COMPRAR AGORA",
+        "btn_url": ""
+      }
+    },
+    "main_bloco_duplo_brindar_DEkBpQ": {
+      "type": "main-bloco-duplo-brindar",
+      "name": "Bloco duplo brindar",
+      "settings": {
+        "padding-block-start": 96,
+        "padding-block-end": 0,
+        "bl1_img": "shopify://shop_images/Frame_1261154109.jpg",
+        "title": "Pronta pra brindar o seu equilíbrio?",
+        "title_color": "#d58b30",
+        "subtitle": "Escolha seu sabor favorito e descubra como é viver com leveza.",
+        "subtitle_color": "#4d4d4d",
+        "btn_text": "COMPRAR AGORA",
+        "btn_url": "",
+        "bl1_btn_color": "#d58b30",
+        "bl1_btn_color_txt": "#ffffff",
+        "bl2_img": "shopify://shop_images/Adesivo_progress_over_perfection_Amarelo_1.png"
+      }
+    },
+    "main_slider_8Mxri6": {
+      "type": "main-slider",
+      "blocks": {
+        "depoimento_fqGTyc": {
+          "type": "depoimento",
+          "settings": {
+            "title": "Muito leve!!",
+            "subtitle": "“É leve, gostosa e me faz sentir bem comigo mesma. Finalmente uma bebida que combina com o que eu acredito.”",
+            "name": "Mariana R."
+          }
+        },
+        "depoimento_ggQLne": {
+          "type": "depoimento",
+          "settings": {
+            "title": "Sabor muito bom!!",
+            "subtitle": "“Descobri a Glimmer e virou meu ritual depois do trabalho. Me ajuda a desacelerar sem peso na consciência.”",
+            "name": "Luiza F."
+          }
+        },
+        "depoimento_KwMExk": {
+          "type": "depoimento",
+          "settings": {
+            "title": "energia que contagia",
+            "subtitle": "“Além de deliciosa, tem uma vibe tão boa. Dá vontade de compartilhar com as amigas e celebrar juntas.”",
+            "name": "Isabela M."
+          }
+        },
+        "depoimento_VmFbgQ": {
+          "type": "depoimento",
+          "settings": {
+            "title": "Muito leve!!",
+            "subtitle": "“É leve, gostosa e me faz sentir bem comigo mesma. Finalmente uma bebida que combina com o que eu acredito.”",
+            "name": "Mariana R."
+          }
+        },
+        "depoimento_fnppEi": {
+          "type": "depoimento",
+          "settings": {
+            "title": "Sabor muito bom!!",
+            "subtitle": "“Descobri a Glimmer e virou meu ritual depois do trabalho. Me ajuda a desacelerar sem peso na consciência.”",
+            "name": "Luiza F."
+          }
+        }
+      },
+      "block_order": [
+        "depoimento_fqGTyc",
+        "depoimento_ggQLne",
+        "depoimento_KwMExk",
+        "depoimento_VmFbgQ",
+        "depoimento_fnppEi"
+      ],
+      "name": "Slider",
+      "settings": {
+        "padding-block-start": 100,
+        "padding-block-end": 0,
+        "title": "Elas já estão vivendo o equilíbrio",
+        "subtitle": "Histórias reais de quem descobriu que leveza e prazer podem andar de mãos dadas",
+        "main_banner_loop": false,
+        "main_banner_autoplay": true,
+        "main_banner_autoplay_time": 5
+      }
+    },
+    "17634723546ff083b5": {
+      "type": "_blocks",
+      "blocks": {
+        "group_iwRUQA": {
+          "type": "group",
+          "name": "t:names.group",
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 100,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_UTHPUB": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Siga nosso Instagram</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_mbUycw": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "@INSTAGRAM",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_UTHPUB",
+            "button_mbUycw"
+          ]
+        },
+        "instafeed_app_block_rPAQP4": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "disabled": true,
+          "settings": {
+            "title": "Siga nosso Instagram",
+            "title_color": "#2b348b",
+            "title_size_v2": 48,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": true,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "group_iwRUQA",
+        "instafeed_app_block_rPAQP4"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     }
   },
   "order": [
-    "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "hero_custom_gzjUEr",
+    "marquee_tCV6RL",
+    "marquee_r9M8RY",
+    "product_list_fa6P9H",
+    "main_bloco_duplo_essencia_MMyFXD",
+    "main_equilibrio_NV7qqT",
+    "main_videos_PM89yE",
+    "main_bloco_duplo_brindar_DEkBpQ",
+    "main_slider_8Mxri6",
+    "17634723546ff083b5"
   ]
 }

@@ -9,7 +9,8 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/Logo_Branco_e_Amarelo_Claro.svg",
+    "logo": "shopify://shop_images/Logo_Branco_e_Amarelo_Claro_1.svg",
+    "logo_inverse": "shopify://shop_images/Logo_Branco_e_Amarelo_Claro.svg",
     "logo_height": 36,
     "logo_height_mobile": 28,
     "favicon": "shopify://shop_images/Favicon.svg",
@@ -71,6 +72,8 @@
     "currency_code_enabled_product_pages": false,
     "currency_code_enabled_product_cards": false,
     "currency_code_enabled_cart_items": false,
+    "show_effect_bg": true,
+    "quick_add": true,
     "product_corner_radius": 0,
     "card_corner_radius": 4,
     "show_variant_image": false,

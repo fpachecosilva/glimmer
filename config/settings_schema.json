@@ -2070,6 +2070,12 @@
     "settings": [
       {
         "type": "checkbox",
+        "id": "show_effect_bg",
+        "label": "Exibir efeito de fundo nos cards",
+        "default": true
+      },
+      {
+        "type": "checkbox",
         "id": "quick_add",
         "label": "t:settings.quick_add",
         "default": true

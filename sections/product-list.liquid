@@ -1,5 +1,3 @@
-
-
 {% liquid
   assign max_items = section.settings.max_products
 %}
@@ -79,6 +77,24 @@
     {%- content_for 'blocks' -%}
   </div>
 </div>
+
+{% style %}
+  .section-resource-list .card-product-default {
+    color: var(--custom-blue);
+    font-family: 'Lastik', 'sans-serif';
+    font-size: 13px;
+  }
+
+  .priceContainer .price {
+    color: red !important;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-resource-list .card-product-default {
+      font-size: 24px;
+    }
+  }
+{% endstyle %}
 
 {% schema %}
 {

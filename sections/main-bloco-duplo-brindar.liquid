@@ -1,0 +1,217 @@
+<div class="bloco-duplo-brindar section-{{ section.id }} section section--page-width">
+  <div class="wrapper-blocos flex flex-col md:flex-row items-center gap-[24px] md:!gap-[100px] relative py-[40px] md:py-0">
+    <div class="bloco-1 w-full md:w-1/2 !gap-[20px] rounded-2xl flex flex-col items-center h-full relative overflow-hidden">
+      {% if section.settings.bl1_img %}
+        {{-
+          section.settings.bl1_img
+          | image_url: width: 3840
+          | image_tag:
+            width: section.settings.bl1_img.width,
+            widths: '240, 352, 832, 1200, 1600, 1920, 2560, 3840',
+            height: section.settings.bl1_img.height,
+            class: 'h-full object-cover rounded-2xl',
+            alt: shop.name,
+            sizes: '(min-width: 750px) calc(var(--logo-width)), 100vw'
+        -}}
+      {% endif %}
+    </div>
+
+    <div class="bloco-2 w-full md:w-1/2">
+      {% if section.settings.bl2_img %}
+        {{-
+          section.settings.bl2_img
+          | image_url: width: 3840
+          | image_tag:
+            width: section.settings.bl2_img.width,
+            widths: '240, 352, 832, 1200, 1600, 1920, 2560, 3840',
+            height: section.settings.bl2_img.height,
+            class: 'w-[150px] !hidden md:!block absolute top-[-170px] right-0',
+            alt: shop.name,
+            sizes: '(min-width: 750px) calc(var(--logo-width)), 100vw'
+        -}}
+      {% endif %}
+      {% if section.settings.title %}
+        <p class="text-block h4 text-center md:!text-left mb-[16px]">
+          {{ section.settings.title }}
+        </p>
+      {% endif %}
+      {% if section.settings.subtitle %}
+        <p class="subtitle text-[15px] md:text-[18px] text-center md:!text-left mb-[30px] md:mb-[48px] md:w-[345px]">
+          {{ section.settings.subtitle }}
+        </p>
+      {% endif %}
+      <a class="button !text-[12px] md:!text-[16px] !w-full md:!w-[210px]" href="{{ section.settings.btn_url }}">
+        {{- section.settings.btn_text -}}
+      </a>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  	.section-{{ section.id }} {
+      	padding-top: 0;
+      	padding-bottom: 0;
+      }
+
+     .section-{{ section.id }} .bloco-2 .h4 {
+     	color: {{ section.settings.title_color }};
+     }
+
+     .section-{{ section.id }} .bloco-2 .subtitle {
+    	color: {{ section.settings.subtitle_color }};
+     }
+
+    .section-{{ section.id }} .bloco-2 .button {
+    	background: {{ section.settings.bl1_btn_color }};
+    	color: {{ section.settings.bl1_btn_color_txt }};
+    }
+
+   .section-{{ section.id }} .bloco-2 .button:hover {
+   	background: var(--custom-blue-light);
+   	color: var(--custom-blue);
+   }
+
+  @media screen and (min-width: 750px) {
+  	.section-{{ section.id }} {
+  		padding-top: {{ section.settings.padding-block-start }}px;
+  		padding-bottom: {{ section.settings.padding-block-end }}px;
+  	}
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Bloco duplo brindar",
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    },
+    {
+      "type": "text"
+    },
+    {
+      "type": "icon"
+    },
+    {
+      "type": "image"
+    },
+    {
+      "type": "button"
+    },
+    {
+      "type": "video"
+    },
+    {
+      "type": "group"
+    },
+    {
+      "type": "spacer"
+    },
+    {
+      "type": "_divider"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Bloco 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "bl1_img",
+      "label": "Imagem"
+    },
+    {
+      "type": "header",
+      "content": "Bloco 2"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Mais do que uma marca, um movimento de equilíbrio"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Cor do título",
+      "default": "#D58B30"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "A Glimmer nasceu para celebrar o melhor do meio-termo, aquele espaço leve entre o prazer e o bem-estar. E por isso, criamos bebidas feitas com ingredientes naturais, design aspiracional e sabor de verdade."
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Cor do subtítulo",
+      "default": "#4D4D4D"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Texto do botão",
+      "default": "CONHEÇA A NOSSA ESSÊNCIA"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Link do botão"
+    },
+    {
+      "type": "color",
+      "id": "bl1_btn_color",
+      "label": "Cor do botão",
+      "default": "#D58B30"
+    },
+    {
+      "type": "color",
+      "id": "bl1_btn_color_txt",
+      "label": "Cor do texto do botão",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "image_picker",
+      "id": "bl2_img",
+      "label": "Imagem"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bloco duplo brindar"
+    }
+  ]
+}
+{% endschema %}

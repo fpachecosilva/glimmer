@@ -1,0 +1,105 @@
+<div class="wrapper-section-videos !bg-[#ffefc6] py-[40px] md:py-0">
+  <div class="videos section-{{ section.id }} section section--page-width">
+    <div class="wrapper-section-videos">
+      <div class="videos section-{{ section.id }} section section--page-width !py-0">
+        <p class="title-block h4 text-center mb-[16px]">{{ section.settings.title }}</p>
+        <p class="text-[15px] md:text-[18px] text-center mb-[24px] md:mb-[65px]">{{ section.settings.subtitle }}</p>
+
+        <div class="flex overflow-auto md:!grid grid-cols-4 gap-[20px] mb-[24px] md:mb-[65px]">
+          {% for block in section.blocks %}
+            <div class="video-item">
+              {% render block %}
+            </div>
+          {% endfor %}
+        </div>
+
+        <a class="button mx-auto w-full min-w-[320px]" href="{{ section.settings.btn_url }}">
+          {{- section.settings.btn_text -}}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .section-{{ section.id }} .video-item {
+    border-radius: 16px;
+    overflow: hidden;
+    min-width: 200px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding-block-start }}px;
+      padding-bottom: {{ section.settings.padding-block-end }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Vídeos",
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "blocks": [
+    {
+      "type": "video"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Elas já encontraram o equilíbrio"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Descubra o que nossa comunidade diz sobre viver o brilho Glimmer"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Texto do botão",
+      "default": "COMPRAR AGORA"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Link do botão"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vídeos"
+    }
+  ]
+}
+{% endschema %}

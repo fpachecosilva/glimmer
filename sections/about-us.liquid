@@ -1,4 +1,23 @@
-SOBRE NÓS
+<div class="sobre-nos section-{{ section.id }} section section--page-width pt-[30px]">
+  <div class="wrapper-block flex items-center text-left flex-col md:flex-row !gap-[30px] md:!gap-[110px] {% if section.settings.direction == 'flex-start' %}!flex-col md:!flex-row {% elsif section.settings.direction == 'flex-end' %}md:!flex-row-reverse{% endif %} pb-[30px]">
+    {{-
+      section.settings.image
+      | image_url: width: 3840
+      | image_tag:
+        width: section.settings.image.width,
+        widths: '240, 352, 832, 1200, 1600, 1920, 2560, 3840',
+        height: section.settings.image.height,
+        class: 'w-full md:w-1/2',
+        alt: shop.name,
+        sizes: '(min-width: 750px) calc(var(--logo-width)), 100vw'
+    -}}
+
+    <div class="wrapper-texts w-full md:w-1/2">
+      <p class="title-block h4 pb-[30px]">{{ section.settings.title }}</p>
+      <span class="text-[#4D4D4D]">{{ section.settings.text }}</span>
+    </div>
+  </div>
+</div>
 
 {% schema %}
 {
@@ -30,6 +49,37 @@ SOBRE NÓS
       "step": 1,
       "unit": "px",
       "default": 0
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagem"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texto"
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Imagem à esquerda"
+        },
+        {
+          "value": "flex-end",
+          "label": "Imagem a direita"
+        }
+      ],
+      "default": "flex-start",
+      "label": "Selecione uma opção"
     }
   ],
   "presets": [

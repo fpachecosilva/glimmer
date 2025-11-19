@@ -1,0 +1,168 @@
+<div class="sobre-nos-comunidade section-{{ section.id }} section section--page-width">
+  <div class="bloco-01 flex flex-col !gap-[30px] h-[500px] md:h-auto relative mb-[30px]">
+    {%- if section.settings.image -%}
+      {{-
+        section.settings.image
+        | image_url: width: 3840
+        | image_tag:
+          width: section.settings.image.width,
+          widths: '240, 352, 832, 1200, 1600, 1920, 2560, 3840',
+          height: 'auto',
+          class: 'w-full h-auto rounded-2xl !hidden md:!block',
+          alt: shop.name,
+          sizes: '(min-width: 750px) calc(var(--logo-width)), 100vw'
+      -}}
+    {%- endif -%}
+
+    {%- if section.settings.image_mob -%}
+      {{-
+        section.settings.image_mob
+        | image_url: width: 3840
+        | image_tag:
+          width: section.settings.image_mob.width,
+          widths: '240, 352, 832, 1200, 1600, 1920, 2560, 3840',
+          height: 'auto',
+          class: 'w-full !h-[500px] object-cover rounded-2xl !flex md:!hidden',
+          alt: shop.name,
+          sizes: '(min-width: 750px) calc(var(--logo-width)), 100vw'
+      -}}
+    {%- endif -%}
+
+    <div class="bloco-1-textos flex flex-col absolute md:left-[96px] md:w-[490px] z-[1] top-1/2 -translate-y-1/2 h-full md:h-auto p-[30px] md:p-0 md:pt-[50px]">
+      <p class="text-block h4 !text-white">{{ section.settings.title }}</p>
+      <span class="text-white !pb-[30px] !pt-[20px] text-[14px] md:text-[18px]">{{ section.settings.text }}</span>
+      <a
+        class="button !mt-[30px] absolute md:!relative bottom-[40px] w-[83%] md:w-auto"
+        href="{{ section.settings.btn_url }}"
+      >
+        {{- section.settings.text_btn -}}
+      </a>
+    </div>
+  </div>
+
+  <div class="wrapper-blocos-baixo flex flex-col md:flex-row gap-0 md:!gap-[30px]">
+    <div class="bloco-02 pb-[20px]">
+      {%- if section.settings.image_2 -%}
+        {{-
+          section.settings.image_2
+          | image_url: width: 3840
+          | image_tag:
+            width: section.settings.image_2.width,
+            widths: '240, 352, 832, 1200, 1600, 1920, 2560, 3840',
+            height: section.settings.image_2.height,
+            class: 'w-full rounded-2xl',
+            alt: shop.name,
+            sizes: '(min-width: 750px) calc(var(--logo-width)), 100vw'
+        -}}
+      {%- endif -%}
+    </div>
+    <div class="bloco-03">
+      {%- if section.settings.image_3 -%}
+        {{-
+          section.settings.image_3
+          | image_url: width: 3840
+          | image_tag:
+            width: section.settings.image_3.width,
+            widths: '240, 352, 832, 1200, 1600, 1920, 2560, 3840',
+            height: section.settings.image_3.height,
+            class: 'w-full rounded-2xl',
+            alt: shop.name,
+            sizes: '(min-width: 750px) calc(var(--logo-width)), 100vw'
+        -}}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Nossa comunidade",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Bloco 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagem"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mob",
+      "label": "Imagem mobile"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texto"
+    },
+    {
+      "type": "text",
+      "id": "text_btn",
+      "label": "Texto do botão",
+      "default": "ENTRAR PARA COMUNIDADE"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Link do botão"
+    },
+    {
+      "type": "header",
+      "content": "Bloco 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Imagem"
+    },
+    {
+      "type": "header",
+      "content": "Bloco 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Imagem"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nossa comunidade"
+    }
+  ]
+}
+{% endschema %}

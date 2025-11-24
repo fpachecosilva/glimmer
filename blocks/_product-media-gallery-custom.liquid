@@ -1,0 +1,160 @@
+{% assign sectionid = section.id | remove: '-' | remove: '__' | remove: '_' %}
+
+<div
+  style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+  class="swiper mySwiper2 m-[10px] md:m-0 md:mb-[10px]"
+>
+  <div class="swiper-wrapper">
+    {% for media in product.media %}
+      <div class="swiper-slide bg-[#F8EFE3]" data-media-id="{{ media.id }}">
+        {% case media.media_type %}
+          {% when 'image' %}
+            <img
+              class="data-media"
+              src="{{ media | image_url: width: 1200 }}"
+            >
+          {% when 'video' %}
+            {{ media | media_tag }}
+          {% when 'model' %}
+            {{ media | media_tag }}
+        {% endcase %}
+      </div>
+    {% endfor %}
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>
+<div thumbsSlider="" class="swiper mySwiper !hidden md:!block">
+  <div class="swiper-wrapper">
+    {% for media in product.media %}
+      <div
+        class="swiper-slide bg-[#F8EFE3] cursor-pointer"
+        data-media-id="{{ media.id }}"
+        custom_color="{{ custom_color }}"
+      >
+        {% case media.media_type %}
+          {% when 'image' %}
+            <img class="data-media thumbs" src="{{ media | image_url: width: 1200 }}">
+          {% when 'video' %}
+            {{ media | media_tag }}
+          {% when 'model' %}
+            {{ media | media_tag }}
+        {% endcase %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% if settings.show_effect_bg %}
+  {% style %}
+    .data-media {
+      height: 300px;
+      width: auto;
+      margin: auto;
+    }
+
+    .data-media.thumbs {
+      height: 165px;
+      width: auto;
+    }
+    [data-media-id]::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        circle,
+        {{product.metafields.custom.cor_de_fundo_card_product | default: '#fcdcd9'}} 55%,
+        transparent 55%
+      );
+      filter: blur(20px);
+      z-index: -1;
+      border-radius: 50%;
+    }
+
+    @media screen and (min-width: 750px) {
+      .data-media {
+        height: 640px;
+      }
+
+      .mySwiper2 [data-media-id]::before {
+        width: 60%;
+      }
+    }
+  {% endstyle %}
+{% endif %}
+
+{% for media in product.media %}
+  {% style %}
+    [data-media-id='{{ media.id }}']::before {
+      background: radial-gradient(
+        circle,
+        {% if media.alt contains 'pink' %}#fcdcd9{% elsif media.alt contains 'yellow' %}#fdedc5{% endif %} 55%,
+        transparent 55%
+      ) !important;
+    }
+  {% endstyle %}
+{% endfor %}
+
+<script>
+  var swiper = new Swiper('.mySwiper', {
+    spaceBetween: 10,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+  });
+  var swiper2 = new Swiper('.mySwiper2', {
+    spaceBetween: 10,
+    slidesPerView: 1.1,
+    grabCursor: true,
+    thumbs: {
+      swiper: swiper,
+    },
+    breakpoints: {
+      750: {
+        slidesPerView: 1,
+      },
+    },
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Carrossel de imagens",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Ajustes slider"
+    },
+    {
+      "type": "checkbox",
+      "id": "main_banner_loop",
+      "label": "Exibir banners em loop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "main_banner_autoplay",
+      "label": "Rodar slides automaticamente",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "main_banner_autoplay_time",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "s",
+      "label": "Tempo para mudança de slides",
+      "default": 5
+    }
+  ],
+  "presets": [
+    {
+      "name": "Carrossel de imagens"
+    }
+  ]
+}
+{% endschema %}

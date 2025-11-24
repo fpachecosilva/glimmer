@@ -1,4 +1,3 @@
-
 <script
   src="{{ 'product-recommendations.js' | asset_url }}"
   type="module"
@@ -52,8 +51,11 @@
       {{ styles }}
     "
   >
-    <div class="section-resource-list__content">
+    <div class="section-resource-list__content flex !flex-row justify-center md:!justify-between !w-full">
       {% content_for 'blocks' %}
+      {% if section.settings.btn_text != blank %}
+        <a class="button !hidden md:!block" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+      {% endif %}
     </div>
 
     {%- if recommendations.performed or section.settings.product == blank -%}
@@ -449,6 +451,17 @@
       "step": 1,
       "unit": "px",
       "default": 0
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Texto do botão",
+      "default": "VER MAIS"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Link do botão"
     }
   ],
   "presets": [

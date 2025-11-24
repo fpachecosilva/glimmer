@@ -1,0 +1,453 @@
+<p class="text-custom-blue text-[12px]">QUANTIDADE:</p>
+
+<div class="wrapper-kits !text-[#4D4D4D] leading-tight">
+  {% if block.settings.bloco_01_qtd_texto != blank %}
+    <label class="kit bloco-01 flex items-center p-[16px] border border-[#AEB6B3] w-full rounded-[8px] relative mt-[8px] {% if block.settings.bloco_01_tag != blank %}mt-[22px]{% endif %} peer-checked:border-custom-blue">
+      <input
+        type="radio"
+        name="kit"
+        value="{{ block.settings.bloco_01_qtd }}"
+        class="kit-input w-[20px] h-[20px] accent-custom-blue peer"
+      >
+      {% if block.settings.bloco_01_tag != blank %}
+        <span class="kit-tag absolute top-[-15px] px-[5px] right-[10px] bg-custom-blue text-[#fff] font-[700] text-[12px] rounded-tl-[4px] rounded-tr-[4px]">
+          {{- block.settings.bloco_01_tag -}}
+        </span>
+      {% endif %}
+
+      <div class="kit-box flex w-full justify-between">
+        <div class="unidades-economize flex flex-col !gap-0 justify-center">
+          <p class="kit-qtd text-[16px]">{{ block.settings.bloco_01_qtd_texto }}</p>
+          {% if block.settings.bloco_01_economize != blank %}
+            <span class="kit-economize text-[13px]">{{ block.settings.bloco_01_economize }}</span>
+          {% endif %}
+        </div>
+
+        <p class="kit-preco flex flex-col items-end !gap-0">
+          <span class="valor-kit" data-qtd="{{ block.settings.bloco_01_qtd }}"></span>
+          {% if product.compare_at_price_max > product.price %}
+            <span class="valor-comparativo line-through text-[13px] opacity-70 text-[14px] text-[#AEB6B3]">
+              {{ product.compare_at_price_max | money }}
+            </span>
+          {% endif %}
+        </p>
+      </div>
+    </label>
+  {% endif %}
+
+  {% if block.settings.bloco_02_qtd_texto != blank %}
+    <label class="kit bloco-02 flex items-center p-[16px] border border-[#AEB6B3] w-full rounded-[8px] relative mt-[8px] {% if block.settings.bloco_02_tag != blank %}mt-[22px]{% endif %}">
+      <input
+        type="radio"
+        name="kit"
+        value="{{ block.settings.bloco_02_qtd }}"
+        class="kit-input w-[20px] h-[20px] accent-custom-blue"
+      >
+      {% if block.settings.bloco_02_tag != blank %}
+        <span class="kit-tag absolute top-[-15px] px-[5px] right-[10px] bg-custom-blue text-[#fff] font-[700] text-[12px] rounded-tl-[4px] rounded-tr-[4px]">
+          {{- block.settings.bloco_02_tag -}}
+        </span>
+      {% endif %}
+
+      <div class="kit-box flex w-full justify-between">
+        <div class="unidades-economize flex flex-col !gap-0 justify-center">
+          <p class="kit-qtd text-[16px]">{{ block.settings.bloco_02_qtd_texto }}</p>
+          {% if block.settings.bloco_02_economize != blank %}
+            <span class="kit-economize text-[13px]">{{ block.settings.bloco_02_economize }}</span>
+          {% endif %}
+        </div>
+
+        <p class="kit-preco flex flex-col items-end !gap-0">
+          <span class="valor-kit" data-qtd="{{ block.settings.bloco_02_qtd }}"></span>
+          {% if product.compare_at_price_max > product.price %}
+            <span class="valor-comparativo line-through text-[13px] opacity-70 text-[14px] text-[#AEB6B3]">
+              {{ product.compare_at_price_max | money }}
+            </span>
+          {% endif %}
+        </p>
+      </div>
+    </label>
+  {% endif %}
+
+  {% if block.settings.bloco_03_qtd_texto != blank %}
+    <label class="kit bloco-03 flex items-center p-[16px] border border-[#AEB6B3] w-full rounded-[8px] relative mt-[8px] {% if block.settings.bloco_03_tag != blank %}mt-[22px]{% endif %}">
+      <input
+        type="radio"
+        name="kit"
+        value="{{ block.settings.bloco_03_qtd }}"
+        class="kit-input w-[20px] h-[20px] accent-custom-blue"
+      >
+      {% if block.settings.bloco_03_tag != blank %}
+        <span class="kit-tag absolute top-[-15px] px-[5px] right-[10px] bg-custom-blue text-[#fff] font-[700] text-[12px] rounded-tl-[4px] rounded-tr-[4px]">
+          {{- block.settings.bloco_03_tag -}}
+        </span>
+      {% endif %}
+
+      <div class="kit-box flex w-full justify-between">
+        <div class="unidades-economize flex flex-col !gap-0 justify-center">
+          <p class="kit-qtd text-[16px]">{{ block.settings.bloco_03_qtd_texto }}</p>
+          {% if block.settings.bloco_03_economize != blank %}
+            <span class="kit-economize text-[13px]">{{ block.settings.bloco_03_economize }}</span>
+          {% endif %}
+        </div>
+
+        <p class="kit-preco flex flex-col items-end !gap-0">
+          <span class="valor-kit" data-qtd="{{ block.settings.bloco_03_qtd }}"></span>
+          {% if product.compare_at_price_max > product.price %}
+            <span class="valor-comparativo line-through text-[13px] opacity-70 text-[14px] text-[#AEB6B3]">
+              {{ product.compare_at_price_max | money }}
+            </span>
+          {% endif %}
+        </p>
+      </div>
+    </label>
+  {% endif %}
+</div>
+
+<div class="flex items-center justify-center gap-[20px] mt-[20px]">
+  <div class="preco-anterior line-through text-[#A2A2A2]" style="display:none;"></div>
+  <div class="preco-total">Selecione um kit</div>
+  <div
+    class="preco-total-descontos bg-[#8DCB83] rounded-[6px] text-[12px] text-white py-[6px] px-[8px]"
+    style="display: none"
+  ></div>
+  <div id="kit-loader" style="display:none;">
+    <div class="flex items-center">
+      <div class="loader-spin"></div>
+      <span>Calculando descontos...</span>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const productPrice = {{ product.price | divided_by: 100.0 }};
+  const totalBox = document.querySelector(".preco-total");    
+  const shopifyQtyInput = document.querySelector('form[action="/cart/add"] [name="quantity"]'); 
+  
+  document.querySelectorAll(".kit-input").forEach(input => {
+    input.addEventListener("change", () => {
+      const qty = Number(input.value);      
+      if (shopifyQtyInput) {
+        shopifyQtyInput.value = qty;
+        shopifyQtyInput.dispatchEvent(new Event("change"));
+      }
+
+      // Atualizar URL
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.set("quantity", qty);
+      window.history.replaceState(null, "", newUrl);
+
+      // Atualizar preço total visível
+      const total = (productPrice * qty).toFixed(2).replace(".", ",");
+      totalBox.innerHTML = `R$ ${total}`;
+    });
+  });
+
+  // Preencher preços individuais de cada kit
+  document.querySelectorAll(".valor-kit").forEach(span => {
+    const qty = Number(span.dataset.qtd);
+    const valor = (productPrice * qty).toFixed(2).replace(".", ",");
+    span.innerHTML = `R$ ${valor}`;
+  });
+
+  // Se houver quantity na URL, seleciona automaticamente
+  const params = new URLSearchParams(window.location.search);
+  const qtdURL = params.get("quantity");
+
+  if (qtdURL) {
+    const preset = document.querySelector(`.kit-input[value="${qtdURL}"]`);
+    if (preset) {
+      preset.checked = true;
+
+      // Atualiza input do Shopify
+      if (shopifyQtyInput) {
+        shopifyQtyInput.value = Number(qtdURL);
+        shopifyQtyInput.dispatchEvent(new Event("change"));
+      }
+
+      // Atualiza preco-total automaticamente
+      const total = (productPrice * qtdURL).toFixed(2).replace(".", ",");
+      totalBox.innerHTML = `R$ ${total}`;
+    }
+  }
+
+  // Lógica da classe active para borda
+  const inputs = document.querySelectorAll('.kit-input');
+
+  inputs.forEach(input => {
+    input.addEventListener('change', () => {
+      inputs.forEach(i => i.parentElement.classList.remove('active'));
+      if (input.checked) {
+        input.parentElement.classList.add('active');
+      }
+    });
+  });
+
+});
+</script>
+
+{% comment %} simular envio pro checkout e pegar descontos da loja {% endcomment %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const totalBox = document.querySelector(".preco-total");
+	const totalAnteriorBox = document.querySelector(".preco-anterior");
+	const totalDescontosBox = document.querySelector(".preco-total-descontos");
+  const economiaBox = document.querySelector(".economia-total");
+  const descontosBox = document.querySelector(".lista-descontos");
+  const shopifyQtyInput = document.querySelector('form[action="/cart/add"] [name="quantity"]');	
+	const loader = document.querySelector("#kit-loader");
+
+  const variantId = {{ product.selected_or_first_available_variant.id }};
+
+  async function getCart() {
+    const r = await fetch("/cart.js");
+    return await r.json();
+  }
+
+  async function clearCart() {
+    await fetch("/cart/clear.js", { method: "POST" });
+  }
+
+  async function addToCart(id, qty) {
+    await fetch("/cart/add.js", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, quantity: qty })
+    });
+  }
+
+  async function simulateCheckout(qty) {
+    const originalCart = await getCart(); 
+
+    await clearCart();                    
+    await addToCart(variantId, qty);      
+    const simulated = await getCart();    
+
+    // restaurar carrinho original
+    await clearCart();
+
+    for (const item of originalCart.items) {
+      await addToCart(item.id, item.quantity);
+    }
+
+    return simulated;
+  }
+
+  function renderValues(cart) {
+		console.log("CART RECEBIDO:", cart);
+    const subtotal = cart.items_subtotal_price / 100;
+    const total = cart.total_price / 100;
+    const economia = subtotal - total;
+		const totalAnterior = cart.original_total_price / 100;
+		const totalDescontos = cart.total_discount / 100;
+		const temDesconto = cart.total_discount > 0;
+
+		{% comment %} console.log(cart.original_total_price) {% endcomment %}
+		
+		
+    totalBox.innerHTML = `R$ ${total.toFixed(2).replace(".", ",")}`;
+    
+		// --- PREÇO ANTERIOR ---
+		if (temDesconto) {
+			totalAnteriorBox.style.display = "flex";
+			totalAnteriorBox.innerHTML =
+				`R$ ${totalAnterior.toFixed(2).replace(".", ",")}`;
+		} else {
+			totalAnteriorBox.style.display = "none";
+			totalAnteriorBox.innerHTML = "";
+		}		
+
+		// --- VALOR DO DESCONTO ---
+		if (temDesconto) {
+			totalDescontosBox.style.display = "flex";
+			totalDescontosBox.innerHTML =
+				`R$ ${totalDescontos.toFixed(2).replace(".", ",")} OFF`;
+		} else {
+			totalDescontosBox.style.display = "none";
+			totalDescontosBox.innerHTML = "";
+		}
+
+    descontosBox.innerHTML = "";
+    if (cart.cart_level_discount_applications.length > 0) {
+      cart.cart_level_discount_applications.forEach(d => {
+        const valor = (d.total_allocated_amount / 100)
+          .toFixed(2).replace(".", ",");
+        descontosBox.innerHTML += `<div>- ${d.title} (R$ ${valor})</div>`;
+      });
+    }
+  }
+
+  document.querySelectorAll(".kit-input").forEach(input => {
+    input.addEventListener("change", async () => {
+      const qty = Number(input.value);
+			
+
+      if (shopifyQtyInput) {
+        shopifyQtyInput.value = qty;
+        shopifyQtyInput.dispatchEvent(new Event("change"));
+      }
+
+			if (loader) loader.style.display = "block";
+
+			try {
+				const result = await simulateCheckout(qty);
+				renderValues(result);
+			} finally {
+				setTimeout(() => {
+					if (loader) loader.style.display = "none";
+				}, 150);
+			}				
+		});
+  });
+});
+</script>
+
+{% style %}
+  .active {
+    border: 2px solid var(--custom-blue);
+  }
+
+  #kit-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  #kit-loader .loader-spin {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ddd;
+    border-top-color: var(--custom-blue);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+
+  quantity-selector-component {
+    display: none !important;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Kits",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Bloco 1"
+    },
+    {
+      "type": "number",
+      "id": "bloco_01_qtd",
+      "label": "Quantidade"
+    },
+    {
+      "type": "text",
+      "id": "bloco_01_qtd_texto",
+      "label": "Texto Quantidade"
+    },
+    {
+      "type": "text",
+      "id": "bloco_01_economize",
+      "label": "Texto Economize",
+      "default": "Economize R$ 00,00",
+      "info": "Deixe em branco para não exibir"
+    },
+    {
+      "type": "text",
+      "id": "bloco_01_tag",
+      "label": "Tag de destaque",
+      "default": "EM ALTA",
+      "info": "Deixe em branco para não exibir"
+    },
+    {
+      "type": "number",
+      "id": "bloco_01_ordem",
+      "label": "Ordem de ordenação",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Bloco 2"
+    },
+    {
+      "type": "number",
+      "id": "bloco_02_qtd",
+      "label": "Quantidade"
+    },
+    {
+      "type": "text",
+      "id": "bloco_02_qtd_texto",
+      "label": "Texto Quantidade"
+    },
+    {
+      "type": "text",
+      "id": "bloco_02_economize",
+      "label": "Texto Economize",
+      "default": "Economize R$ 00,00",
+      "info": "Deixe em branco para não exibir"
+    },
+    {
+      "type": "text",
+      "id": "bloco_02_tag",
+      "label": "Tag de destaque",
+      "default": "EM ALTA",
+      "info": "Deixe em branco para não exibir"
+    },
+    {
+      "type": "number",
+      "id": "bloco_02_ordem",
+      "label": "Ordem de ordenação",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Bloco 3"
+    },
+    {
+      "type": "number",
+      "id": "bloco_03_qtd",
+      "label": "Quantidade"
+    },
+    {
+      "type": "text",
+      "id": "bloco_03_qtd_texto",
+      "label": "Texto Quantidade"
+    },
+    {
+      "type": "text",
+      "id": "bloco_03_economize",
+      "label": "Texto Economize",
+      "default": "Economize R$ 00,00",
+      "info": "Deixe em branco para não exibir"
+    },
+    {
+      "type": "text",
+      "id": "bloco_03_tag",
+      "label": "Tag de destaque",
+      "default": "EM ALTA",
+      "info": "Deixe em branco para não exibir"
+    },
+    {
+      "type": "number",
+      "id": "bloco_03_ordem",
+      "label": "Ordem de ordenação",
+      "default": 3
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kits"
+    }
+  ]
+}
+{% endschema %}

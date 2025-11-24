@@ -1,0 +1,179 @@
+<div class="acende">
+  <div class="section section-{{ section.id }} section--page-width pt-[50px] overflow-hidden">
+    <div class="wrapper-blocos flex flex-col md:flex-row items-center relative">
+      <div class="left w-full md:min-w-[420px] md:w-[420px] md:pb-[120px] z-[2] mb-[-85px] md:mb-0">
+        {% if section.settings.title %}
+          <p class="text-block h4">
+            {{ section.settings.title }}
+          </p>
+        {% endif %}
+        <p class="text-[15px] md:text-[18px] pt-[16px] md:pt-[20px] pb-[24px] md:pb-[32px]">
+          {{ section.settings.subtitle }}
+        </p>
+        <a class="button md:min-w-[320px]" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+      </div>
+
+      <div class="right w-full h-[220px] md:h-full">
+        {% if section.settings.imagem %}
+          {{-
+            section.settings.imagem
+            | image_url: width: 3840
+            | image_tag:
+              width: section.settings.imagem.width,
+              widths: '240, 352, 832, 1200, 1600, 1920, 2560, 3840',
+              height: section.settings.imagem.height,
+              class: 'absolute right-[-40px] md:right-0 bottom-0 z-[1] w-[140%] max-w-[140%] md:w-auto h-auto md:h-full object-contain',
+              alt: shop.name,
+              sizes: '(min-width: 750px) calc(var(--logo-width)), 100vw'
+          -}}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  	.acende {
+  		background: {{ section.settings.bg_color }};
+  		color: {{ section.settings.texts_color }};
+  	}
+
+  	.acende .left .button {
+  		background: {{ section.settings.btn_color }};
+  	}
+
+  	.acende .left .button:hover {
+  		background: var(--custom-blue-light);
+  	}
+
+  	.acende .right {
+  		background-image: url('{{ "bg-acende.svg" | asset_url }}');
+  		background-color: #f594b2;
+  		background-blend-mode: overlay;
+  		background-size: contain;
+  		background-repeat: no-repeat;
+  		background-position: right bottom;
+  	}
+  @media screen and (min-width: 750px) {
+  	.section-{{ section.id }} {
+  		padding-top: {{ section.settings.padding-block-start }}px;
+  		padding-bottom: {{ section.settings.padding-block-end }}px;
+  	}
+
+  .acende .right {
+  		background-size: cover;
+  		background-position: right top;
+  	}
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Sabor que acende",
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Bloco",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "imagem",
+          "label": "Imagem"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Titulo"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Texto",
+          "default": "Texto"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Cor de fundo",
+      "default": "#f594b2"
+    },
+    {
+      "type": "color",
+      "id": "texts_color",
+      "label": "Cor dos textos",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "O sabor que acende o seu brilho."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Texto",
+      "default": "Glimmer Pink Berry é a combinação perfeita entre frescor, leveza e atitude. Com frutas vermelhas e um toque sutil de álcool, é a bebida feita pra quem quer curtir o momento com estilo."
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Texto do botão",
+      "default": "COMPRAR AGORA"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Link do botão"
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "Cor do botão",
+      "default": "#bf1f41"
+    },
+    {
+      "type": "image_picker",
+      "id": "imagem",
+      "label": "Imagem"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sabor que acende"
+    }
+  ]
+}
+{% endschema %}

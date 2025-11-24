@@ -1,0 +1,313 @@
+<div class="calculo-de-frete-minicart mx-[24px]" {{ block.shopify_attributes }}>
+  <div class="frete">
+    <div id="shippingminicart" class="shippingminicart">
+      <label>Calcular frete:</label>
+      <input type="hidden" name="id" value="{{ cart.items.first.variant_id }}">
+      <div class="shippingminicart-inner">
+        <input
+          class="zipminicart"
+          type="text"
+          id="zipminicart"
+          name="zipminicart"
+          placeholder="Consultar frete"
+          maxlength="9"
+          required
+        >
+        <button class="calculate-shipping" type="button">
+          <div class="wrapper-svgs">
+            <svg
+              class="arrow-minicart"
+              width="9"
+              height="17"
+              viewBox="0 0 9 17"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0.700012 16.38L0 15.67L7.48001 8.19L0 0.699982L0.700012 0L8.88998 8.19L0.700012 16.38Z" fill="#2b348b"/>
+            </svg>
+
+            <svg
+              class="check-minicart hidden"
+              width="12"
+              height="9"
+              viewBox="0 0 12 9"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M3.7942 6.92265L10.3054 0.411435C10.4163 0.303812 10.5457 0.25 10.6936 0.25C10.8414 0.25 10.9691 0.304099 11.0767 0.412332C11.1843 0.520673 11.2381 0.649211 11.2381 0.797982C11.2381 0.946861 11.1843 1.07511 11.0767 1.18274L4.17088 8.08856C4.06326 8.19619 3.9377 8.25 3.7942 8.25C3.6507 8.25 3.52514 8.19619 3.41752 8.08856L0.152939 4.82399C0.0453153 4.71554 -0.00550807 4.58679 0.000472201 4.4378C0.00644888 4.28867 0.0635502 4.16031 0.171773 4.05269C0.280113 3.94507 0.408662 3.89126 0.557423 3.89126C0.706305 3.89126 0.834556 3.94507 0.94218 4.05269L3.7942 6.92265Z" fill="#2b348b"/>
+            </svg>
+            {%- render 'loading-spinner' -%}
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="shipping-result-minicart" class="shipping-result-minicart mx-[24px]"></div>
+
+<style>
+  .shippingminicart {
+    display: flex;
+    align-items: center;
+    margin-top: 1.25rem;
+    position: relative;
+    border: 0;
+  }
+
+  .shippingminicart-inner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .shippingminicart label {
+    color: var(--custom-blue);
+    font-size: 12px;
+    line-height: normal;
+    min-width: 125px;
+  }
+
+  .arrow-minicart path {
+    fill: var(--custom-blue) !important;
+  }
+
+  /* Campo de CEP */
+  .zipminicart {
+    padding-top: 11px;
+    padding-bottom: 11px;
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 100%;
+    background-color: transparent;
+    color: var(--custom-blue);
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid var(--custom-blue);
+    box-shadow: none;
+    box-sizing: border-box;
+  }
+
+  .zipminicart:focus {
+    font-size: 14px;
+    color: var(--lov-primary);
+  }
+
+  .zipminicart:focus-visible {
+    outline: none;
+  }
+
+  .zipminicart::placeholder {
+    font-size: 14px;
+    color: var(--custom-blue);
+  }
+
+  .check-minicart path {
+    fill: var(--custom-blue);
+  }
+
+  /* Botão de calcular frete */
+  .calculate-shipping {
+    margin-bottom: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Ícones */
+  .wrapper-svgs {
+    position: relative;
+    transition: left 0.2s ease-in-out;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  /* Texto de resultado */
+  .shipping-result-minicart {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--custom-blue);
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .shipping-result-minicart ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0;
+  }
+
+  .shipping-result-minicart p {
+    margin-bottom: 0;
+  }
+
+  /* Ajustes da estrutura original */
+  .calculo-de-frete {
+    margin-top: 40px;
+    padding: 0;
+    position: relative;
+  }
+
+  .calculo-de-frete .vermenos,
+  .calculo-de-frete .vermais {
+    transition: opacity 0.5s ease;
+    position: absolute;
+    right: 0;
+  }
+
+  .calculo-de-frete .vermenos {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .calculo-de-frete details[open] .vermais {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .calculo-de-frete details[open] .vermenos {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .calculo-de-frete #shipping-result-minicart h3 {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  #shippingminicart .loading__spinner {
+    right: 10px;
+    bottom: 10px;
+  }
+</style>
+
+<script>
+  async function fetchJSON(url, options = {}) {
+    const res = await fetch(url, {
+      credentials: 'same-origin',
+      headers: { Accept: 'application/json', ...(options.headers || {}) },
+      ...options,
+    });
+    if (!res.ok) {
+      const text = await res.text().catch(() => '');
+      throw new Error(`HTTP ${res.status} - ${text || 'Erro na requisição'}`);
+    }
+    return res.json();
+  }
+
+  document.addEventListener('click', async function (e) {
+    const btn = e.target.closest('.calculate-shipping');
+    if (!btn) return;
+
+    const $result = document.getElementById('shipping-result-minicart');
+    const $wrapperSvgs = document.querySelector('.wrapper-svgs');
+    const $arrow = document.querySelector('.arrow-minicart');
+    const $check = document.querySelector('.check-minicart');
+
+    const zipRawMinicart = document.getElementById('zipminicart').value || '';
+    const zipMinicart = zipRawMinicart.replace(/\D/g, '');
+    const variantId = document.querySelector('#shippingminicart input[name="id"]').value;
+
+    if (zipMinicart.length !== 8) {
+      alert('Por favor, insira um CEP válido com 8 dígitos.');
+      return;
+    }
+
+    const cartCheck = await fetchJSON('/cart.js');
+    if (!cartCheck.items || cartCheck.items.length === 0) {
+      alert('Adicione ao menos um produto ao carrinho antes de calcular o frete.');
+      return;
+    }
+
+    $arrow.classList.remove('hidden');
+    $check.classList.add('hidden');
+    $result.innerHTML = '<p>Calculando frete…</p>';
+
+    let cartBefore = null;
+    let addResponse = null;
+    let existingLineBefore = null;
+
+    try {
+      const viaCepData = await fetchJSON(`https://viacep.com.br/ws/${zipMinicart}/json/`);
+      if (viaCepData.erro) throw new Error('CEP inválido ou não encontrado.');
+
+      const province = viaCepData.uf || '';
+      const country = 'BR';
+
+      cartBefore = await fetchJSON('/cart.js');
+      existingLineBefore = cartBefore.items.find((i) => String(i.variant_id) === String(variantId)) || null;
+
+      addResponse = await fetchJSON('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: Number(variantId), quantity: 1 }),
+      });
+
+      const shippingData = await fetchJSON(
+        `/cart/shipping_rates.json?shipping_address[zip]=${encodeURIComponent(zipMinicart)}&` +
+          `shipping_address[country]=${encodeURIComponent(country)}&` +
+          `shipping_address[province]=${encodeURIComponent(province)}`
+      );
+
+      if (!shippingData.shipping_rates || shippingData.shipping_rates.length === 0) {
+        throw new Error('Nenhuma opção de frete encontrada.');
+      }
+
+      let html = '<p style="padding-bottom:5px;font-weight:normal">Opções de Frete</p><ul>';
+      shippingData.shipping_rates.forEach((rate) => {
+        html += `<li>${rate.name} - R$ ${rate.price}</li>`;
+      });
+      html += '</ul>';
+
+      $result.innerHTML = html;
+      $wrapperSvgs.classList.add('checked');
+      $arrow.classList.add('hidden');
+      $check.classList.remove('hidden');
+    } catch (err) {
+      console.error(err);
+      $result.innerHTML = '<p>Erro ao calcular o frete.</p>';
+      $wrapperSvgs.classList.remove('checked');
+      $arrow.classList.remove('hidden');
+      $check.classList.add('hidden');
+    } finally {
+      try {
+        if (addResponse && addResponse.key) {
+          if (existingLineBefore) {
+            await fetchJSON('/cart/change.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: existingLineBefore.key, quantity: existingLineBefore.quantity }),
+            });
+          } else {
+            await fetchJSON('/cart/change.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: addResponse.key, quantity: 0 }),
+            });
+          }
+        }
+      } catch (revertErr) {
+        console.warn('Não foi possível reverter o carrinho:', revertErr);
+      }
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && document.activeElement.id === 'zipminicart') {
+        e.preventDefault();
+        document.querySelector('.calculate-shipping').click();
+      }
+    });
+  });
+</script>

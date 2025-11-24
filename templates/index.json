@@ -1068,7 +1068,6 @@
         },
         "instafeed_app_block_rPAQP4": {
           "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
-          "disabled": true,
           "settings": {
             "title": "Siga nosso Instagram",
             "title_color": "#2b348b",

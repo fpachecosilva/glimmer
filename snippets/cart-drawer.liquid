@@ -44,7 +44,7 @@
         data-section-id="{{ section.id }}"
       >
         {%- if cart.empty? -%}
-          <div class="cart-drawer__header">
+          <div class="cart-drawer__header pt-[10px]">
             <button
               ref="closeButton"
               on:click="cart-drawer-component/close"
@@ -82,7 +82,7 @@
               id="cart-drawer-heading"
             >
               {{ 'content.cart_title' | t }}
-              {% render 'cart-bubble' %}
+              {% comment %} {% render 'cart-bubble' %} {% endcomment %}
             </h2>
 
             <button
@@ -97,16 +97,40 @@
             </button>
           </div>
 
+          {% unless cart == empty %}
+            {% if settings.enable_shipping_bar %}
+              {% render 'free-shipping-bar' %}
+            {% endif -%}
+          {% endunless %}
+
           <div
             class="cart-drawer__content motion-reduce"
             aria-label="{{ 'accessibility.cart' | t }}"
             style="--header-height: 60px;"
           >
             <scroll-hint
-              class="cart-drawer__items"
+              class="cart-drawer__items min-h-[500px]"
             >
               {% render 'cart-products' %}
             </scroll-hint>
+
+            {% assign block_settings = block.settings %}
+            <div
+              class="accordion accordion--{{ block.id }} accordion--{{ block_settings.icon }} border-style spacing-style{% if block_settings.inherit_color_scheme == false %} color-{{ block_settings.color_scheme }}{% endif %}{% if block_settings.dividers %} accordion--dividers{% endif %}"
+              style="
+                --summary-font-family: var(--font-{{ block_settings.type_preset }}--family);
+                --summary-font-style: var(--font-{{ block_settings.type_preset }}--style);
+                --summary-font-weight: var(--font-{{ block_settings.type_preset }}--weight);
+                --summary-font-size: var(--font-{{ block_settings.type_preset }}--size);
+                --summary-font-line-height: var(--font-{{ block_settings.type_preset }}--line-height);
+                --summary-font-case: var(--font-{{ block_settings.type_preset }}--case);
+                {% render 'spacing-style', settings: block_settings %}
+                {% render 'border-override', settings: block_settings %}
+              "
+              {{ block.shopify_attributes }}
+            >
+              {% render 'frete' %}
+            </div>
 
             <div
               class="cart-drawer__summary"
@@ -115,6 +139,16 @@
             </div>
           </div>
         {%- endif -%}
+
+        <button
+          class="text-[12px] !underline text-[#222B3A] text-center mb-[20px]"
+          ref="closeButton"
+          on:click="cart-drawer-component/close"
+          class="button close-button cart-drawer__close-button button-unstyled"
+          href=""
+        >
+          Continuar comprando
+        </button>
       </cart-items-component>
     </div>
   </dialog>
@@ -177,5 +211,6 @@
     position: sticky;
     bottom: 0;
     z-index: 1;
+    padding-bottom: 10px !important;
   }
 {% endstylesheet %}

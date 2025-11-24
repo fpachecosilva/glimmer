@@ -1,0 +1,101 @@
+{%- liquid
+  assign free_shipping_pure = settings.free_shipping_value | times: 100
+  assign free_shipping_threshold = free_shipping_pure | divided_by: 100.0
+  assign cart_total = cart.total_price | divided_by: 100.0
+  assign amount_remaining = free_shipping_threshold | minus: cart_total
+  assign progress_percentage = cart_total | divided_by: free_shipping_threshold | times: 100
+  if progress_percentage > 100
+    assign progress_percentage = 100
+  endif
+-%}
+
+<style>
+  .free-shipping-bar {
+    text-align: center;
+    padding: 20px 16px;
+    margin: 24px;
+    margin-top: 0;
+    border-radius: 8px;
+    max-width: 100%;
+    background: #fde7df;
+  }
+
+  .free-shipping-bar div:empty {
+    display: block !important;
+  }
+
+  .free-shipping-bar__message {
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  .free-shipping-bar__message.incomplete,
+  .free-shipping-bar__message.complete {
+    text-align: center !important;
+  }
+
+  .free-shipping-bar__progress-container {
+    background-color: #fff;
+    border-radius: 100px;
+    overflow: visible;
+    height: 12px;
+    position: relative;
+  }
+
+  .free-shipping-bar__progress {
+    height: 100%;
+    transition: width 0.4s ease-in-out;
+  }
+
+  .free-shipping-bar__progress-incomplete {
+    background-color: #f697b4;
+    border-radius: 100px;
+  }
+
+  .free-shipping-bar__progress-complete {
+    background-color: var(--custom-blue);
+  }
+
+  .free-shipping-bar__message.incomplete,
+  .free-shipping-bar__message.complete {
+    color: var(--custom-blue);
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .free-shipping-bar__cursor {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 10;
+  }
+
+  .free-shipping-bar__cursor-incomplete {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAxNiAxNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iOCIgY3k9IjguMjUiIHI9IjgiIGZpbGw9IiNGOUJBMDUiLz4KPHBhdGggZD0iTTMuNzI2NTcgNy45MjY1M0w2LjYyMzIgNi44NzMyTDcuNjc2NTMgMy45NzY1N0M3Ljc4NjM3IDMuNjc0NDggOC4yMTM2MyAzLjY3NDQ4IDguMzIzNDcgMy45NzY1N0w5LjM3NjggNi44NzMyTDEyLjI3MzQgNy45MjY1M0MxMi41NzU1IDguMDM2MzcgMTIuNTc1NSA4LjQ2MzYzIDEyLjI3MzQgOC41NzM0N0w5LjM3NjggOS42MjY4TDguMzIzNDcgMTIuNTIzNEM4LjIxMzYzIDEyLjgyNTUgNy43ODYzNyAxMi44MjU1IDcuNjc2NTMgMTIuNTIzNEM2LjYyMzIgOS42MjY4IDMuNzI2NTcgOC41NzM0NyAzLjQyNDQ4IDguNDYzNjMgMy40MjQ0OCA4LjAzNjM3IDMuNzI2NTcgNy45MjY1MyAzLjcyNjU3IDcuOTI2NTNaIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjAuOSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPg==');
+  }
+
+  .free-shipping-bar__cursor-complete {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iOCIgY3k9IjgiIHI9IjgiIGZpbGw9IiNFNjE3NTMiLz4KPHBhdGggZD0iTTYgOFY5QzYgOS41NSA2LjE5NTgzIDEwLjAyMDggNi41ODc1IDEwLjQxMjVDNi45NzkxNyAxMC44MDQyIDcuNDUgMTEgOCAxMUM4LjU1IDExIDkuMDIwODMgMTAuODA0MiA5LjQxMjUgMTAuNDEyNUM5LjgwNDE3IDEwLjAyMDggMTAgOS41NSAxMCA5VjhINlpNOCAxMC4yNUM3LjY1IDEwLjI1IDcuMzU0MTcgMTAuMTI5MiA3LjExMjUgOS44ODc1QzYuODcwODMgOS42NDU4MyA2Ljc1IDkuMzUgNi43NSA5VjguNzVIOS4yNVY5QzkuMjUgOS4zNSA5LjEyOTE3IDkuNjQ1ODMgOC44ODc1IDkuODg3NUM4LjY0NTgzIDEwLjEyOTIgOC4zNSAxMC4yNSA4IDEwLjI1Wk02LjI1IDUuNUM1LjkzMzMzIDUuNSA1LjY1MjA4IDUuNjE0NTggNS40MDYyNSA1Ljg0Mzc1QzUuMTYwNDIgNi4wNzI5MiA0Ljk4NzUgNi4zODc1IDQuODg3NSA2Ljc4NzVMNS42MTI1IDYuOTYyNUM1LjY2MjUgNi43NDU4MyA1Ljc0NTgzIDYuNTcyOTIgNS44NjI1IDYuNDQzNzVDNS45NzkxNyA2LjMxNDU4IDYuMTA4MzMgNi4yNSA2LjI1IDYuMjVDNi4zOTE2NyA2LjI1IDYuNTIwODMgNi4zMTQ1OCA2LjYzNzUgNi40NDM3NUM2Ljc1NDE3IDYuNTcyOTIgNi44Mzc1IDYuNzQ1ODMgNi44ODc1IDYuOTYyNUw3LjYxMjUgNi43ODc1QzcuNTEyNSA2LjM4NzUgNy4zMzk1OCA2LjA3MjkyIDcuMDkzNzUgNS44NDM3NUM2Ljg0NzkyIDUuNjE0NTggNi41NjY2NyA1LjUgNi4yNSA1LjVaTTkuNzUgNS41QzkuNDMzMzMgNS41IDkuMTUyMDggNS42MTQ1OCA4LjkwNjI1IDUuODQzNzVDOC42NjA0MiA2LjA3MjkyIDguNDg3NSA2LjM4NzUgOC4zODc1IDYuNzg3NUw5LjExMjUgNi45NjI1QzkuMTYyNSA2Ljc0NTgzIDkuMjQ1ODMgNi41NzI5MiA5LjM2MjUgNi40NDM3NUM5LjQ3OTE3IDYuMzE0NTggOS42MDgzMyA2LjI1IDkuNzUgNi4yNUM5Ljg5MTY3IDYuMjUgMTAuMDIwOCA2LjMxNDU4IDEwLjEzNzUgNi40NDM3NUMxMC4yNTQyIDYuNTcyOTIgMTAuMzM3NSA2Ljc0NTgzIDEwLjM4NzUgNi45NjI1TDExLjExMjUgNi43ODc1QzExLjAxMjUgNi4zODc1IDEwLjgzOTYgNi4wNzI5MiAxMC41OTM4IDUuODQzNzVDMTAuMzQ3OSA1LjYxNDU4IDEwLjA2NjcgNS41IDkuNzUgNS41Wk04IDEzQzcuMzA4MzMgMTMgNi42NTgzMyAxMi44Njg3IDYuMDUgMTIuNjA2MkM1LjQ0MTY3IDEyLjM0MzggNC45MTI1IDExLjk4NzUgNC40NjI1IDExLjUzNzVDNC4wMTI1IDExLjA4NzUgMy42NTYyNSAxMC41NTgzIDMuMzkzNzUgOS45NUMzLjEzMTI1IDkuMzQxNjcgMyA4LjY5MTY3IDMgOEMzIDcuMzA4MzMgMy4xMzEyNSA2LjY1ODMzIDMuMzkzNzUgNi4wNUMzLjY1NjI1IDUuNDQxNjcgNC4wMTI1IDQuOTEyNSA0LjQ2MjUgNC40NjI1QzQuOTEyNSA0LjAxMjUgNS40NDE2NyAzLjY1NjI1IDYuMDUgMy4zOTM3NUM2LjY1ODMzIDMuMTMxMjUgNy4zMDgzMyAzIDggM0M4LjY5MTY3IDMgOS4zNDE2NyAzLjEzMTI1IDkuOTUgMy4zOTM3NUMxMC41NTgzIDMuNjU2MjUgMTEuMDg3NSA0LjAxMjUgMTEuNTM3NSA0LjQ2MjVDMTEuOTg3NSA0LjkxMjUgMTIuMzQzOCA1LjQ0MTY3IDEyLjYwNjIgNi4wNUMxMi44Njg3IDYuNjU4MzMgMTMgNy4zMDgzMyAxMyA4QzEzIDguNjkxNjcgMTIuODY4NyA5LjM0MTY3IDEyLjYwNjIgOS45NUMxMi4zNDM4IDEwLjU1ODMgMTEuOTg3NSAxMS4wODc1IDExLjUzNzUgMTEuNTM3NUMxMS4wODc1IDExLjk4NzUgMTAuNTU4MyAxMi4zNDM4IDkuOTUgMTIuNjA2MkM5LjM0MTY3IDEyLjg2ODcgOC42OTE2NyAxMyA4IDEzWk04IDEyQzkuMTE2NjcgMTIgMTAuMDYyNSAxMS42MTI1IDEwLjgzNzUgMTAuODM3NUMxMS42MTI1IDEwLjA2MjUgMTIgOS4xMTY2NyAxMiA4QzEyIDYuODgzMzMgMTEuNjEyNSA1LjkzNzUgMTAuODM3NSA1LjE2MjVDMTAuMDYyNSA0LjM4NzUgOS4xMTY2NyA0IDggNEM2Ljg4MzMzIDQgNS45Mzc1IDQuMzg3NSA1LjE2MjUgNS4xNjI1QzQuMzg3NSA1LjkzNzUgNCA2Ljg4MzMzIDQgOEM0IDkuMTE2NjcgNC4zODc1IDEwLjA2MjUgNS4xNjI1IDEwLjgzNzVDNS45Mzc1IDExLjYxMjUgNi44ODMzMyAxMiA4IDEyWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==');
+  }
+</style>
+
+<div class="free-shipping-bar">
+  <div class="free-shipping-bar__progress-container">
+    <div
+      class="free-shipping-bar__progress {% if amount_remaining <= 0 %}free-shipping-bar__progress-complete{% else %}free-shipping-bar__progress-incomplete{% endif %}"
+      style="width: {{ progress_percentage }}%;"
+    ></div>
+  </div>
+  <div class="free-shipping-bar__message {% if amount_remaining <= 0 %}complete{% else %}incomplete{% endif %}">
+    {%- if amount_remaining <= 0 -%}
+      Parabéns, você ganhou Frete Grátis!
+    {%- else -%}
+      Faltam <span class="text-[#F697B4]">R$ {{ amount_remaining | replace: '.', ',' | append: '0' }}</span> para o
+      frete grátis
+    {%- endif -%}
+  </div>
+</div>

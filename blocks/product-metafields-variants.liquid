@@ -1,0 +1,36 @@
+<div class="wrapper-variants-metafields flex items-center" {{ block.shopify_attributes }}>
+  {% for sabor in product.metafields.custom.produto_sabor.value %}
+    <div class="metafield-variant">
+      <a href="/products/{{ sabor.handle }}">
+        <img
+          src="{{ sabor.featured_image | img_url: '100x' }}"
+          alt="{{ sabor.title }}"
+          width="64"
+          height="64"
+          class="
+            object-cover w-[64px] h-[64px] rounded-[8px]
+            {%- if sabor.handle == product.handle %}
+            	border border-custom-blue border-[3px]
+            {% endif %}
+          "
+          style="background: {{ sabor.metafields.custom.cor_de_fundo_card_product }}"
+        >
+        <p class="text-[#4D4D4D] text-[12px]">
+          {{ sabor.title -}}
+        </p>
+      </a>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Variantes metafield",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Variantes metafield"
+    }
+  ]
+}
+{% endschema %}

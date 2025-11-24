@@ -61,13 +61,18 @@
             <span>{{ cart.total_price | money_with_currency }}</span>
           </caption>
 
+          <div class="flex justify-between text-[10px] pb-[4px] border-b border-b-custom-blue mb-[16px]">
+            <p class="">Produto</p>
+            <p class="">Total</p>
+          </div>
+
           <thead
             class="visually-hidden"
             role="rowgroup"
           >
             <tr
               role="row"
-              class="cart-items__table-row"
+              class="cart-items__table-row relative"
             >
               <th
                 id="productImage"
@@ -104,7 +109,7 @@
             {% for item in cart.items %}
               <tr
                 role="row"
-                class="cart-items__table-row{% if item.parent_relationship.parent != null %} cart-items__nested-line{% endif %}"
+                class="cart-items__table-row{% if item.parent_relationship.parent != null %} cart-items__nested-line{% endif %} relative"
                 ref="cartItemRows[]"
                 data-parent-key="{{ item.parent_relationship.parent.key }}"
                 data-key="{{ item.key }}"
@@ -272,7 +277,7 @@
                   %}
 
                   <button
-                    class="button button--tertiary cart-items__remove"
+                    class="button button--tertiary cart-items__remove absolute right-0"
                     type="button"
                     aria-label="{{ 'accessibility.remove_item' | t: title: item.title | escape }}"
                     on:click="/onLineItemRemove/{{ item.index | plus: 1 }}"
@@ -456,7 +461,7 @@
     align-items: center;
     justify-content: flex-start;
     gap: var(--gap-xs);
-    width: fit-content;
+    height: 32px;
   }
 
   .cart-items__quantity .quantity-selector {
@@ -464,6 +469,8 @@
     flex: 0 1 var(--quantity-selector-width);
     font-size: var(--cart-font-size--sm);
     height: auto;
+    border-radius: 300px;
+    background: transparent;
   }
 
   .cart-items__remove {

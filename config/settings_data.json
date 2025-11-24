@@ -62,7 +62,7 @@
     "cart_type": "drawer",
     "cart_price_font": "secondary",
     "show_cart_note": false,
-    "show_add_discount_code": true,
+    "show_add_discount_code": false,
     "drawer_drop_shadow": true,
     "icon_stroke": "default",
     "input_border_width": 1,
@@ -72,6 +72,7 @@
     "currency_code_enabled_product_pages": false,
     "currency_code_enabled_product_cards": false,
     "currency_code_enabled_cart_items": false,
+    "currency_code_enabled_cart_total": false,
     "show_effect_bg": true,
     "quick_add": true,
     "product_corner_radius": 0,
@@ -84,6 +85,18 @@
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
     "content_for_index": [],
+    "blocks": {
+      "1232542678405107163": {
+        "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
+        "disabled": false,
+        "settings": {}
+      },
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
@@ -165,12 +178,12 @@
       },
       "scheme-3": {
         "settings": {
-          "background": "#eef1ea",
-          "foreground_heading": "#000000",
-          "foreground": "#000000cf",
-          "primary": "#000000cf",
-          "primary_hover": "#000000",
-          "border": "#000000cf",
+          "background": "#ffefc6",
+          "foreground_heading": "#d58b30",
+          "foreground": "#d58b30",
+          "primary": "#d58b30",
+          "primary_hover": "#d58b30",
+          "border": "#d58b30",
           "shadow": "#000000",
           "primary_button_background": "#000000",
           "primary_button_text": "#ffffff",

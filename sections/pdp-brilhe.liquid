@@ -1,0 +1,109 @@
+<div class="brilhe section-{{ section.id }} section section--page-width py-[40px]">
+  {% if section.settings.title %}
+    <p class="text-block h4 text-center pb-[32px] md:pb-[80px]">
+      {{ section.settings.title }}
+    </p>
+  {% endif %}
+  <div class="wrapper-blocos flex overflow-x-scroll md:overflow-x-auto justify-start md:justify-center px-[16px]">
+    {% for block in section.blocks %}
+      <div
+        class="bloco text-center flex flex-col items-center min-w-[200px] md:flex-1"
+        {{ block.shopify_attributes }}
+      >
+        {{-
+          block.settings.imagem
+          | image_url: width: 96
+          | image_tag:
+            width: block.settings.imagem.width,
+            widths: '100, 120, 240',
+            height: block.settings.imagem.height,
+            class: 'w-[80px] md:w-[96px] mx-auto',
+            alt: shop.name,
+            sizes: '(min-width: 750px) calc(var(--logo-width)), 100vw'
+        -}}
+        <p class="text-[16px] md:text-[20px] text-custom-blue">{{ block.settings.title }}</p>
+        <p class="text-[13px] md:text-[16px] text-[#4D4D4D]">{{ block.settings.subtitle }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% style %}
+  @media screen and (min-width: 750px) {
+  	.section-{{ section.id }} {
+  		padding-top: {{ section.settings.padding-block-start }}px;
+  		padding-bottom: {{ section.settings.padding-block-end }}px;
+  	}
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Brilhe",
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Bloco",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "imagem",
+          "label": "Imagem"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Titulo"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Texto",
+          "default": "Texto"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Brilhe de dentro pra fora"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brilhe"
+    }
+  ]
+}
+{% endschema %}

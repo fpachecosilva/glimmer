@@ -57,6 +57,28 @@
     ]
   },
   {
+    "name": "Barra de frete grátis",
+    "settings": [
+      {
+        "type": "header", 
+        "content": "Barra de progresso de frete grátis"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_shipping_bar",
+        "label": "Exibir Barra de progresso",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_value",
+        "label": "Valor para frete grátis",
+        "default": 200,
+        "info": "Insira somente o valor desejado, sem pontos ou virgula. Por exemplo, para R$ 500,00, digite 500"
+      },
+    ]
+  },
+  {
     "name": "t:names.colors",
     "settings": [
       {

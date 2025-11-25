@@ -722,6 +722,10 @@ video {
   margin-bottom: 30px;
 }
 
+.mb-\[50px\] {
+  margin-bottom: 50px;
+}
+
 .mr-\[10px\] {
   margin-right: 10px;
 }
@@ -808,10 +812,6 @@ video {
 
 .h-full {
   height: 100%;
-}
-
-.h-screen {
-  height: 100vh;
 }
 
 .min-h-\[500px\] {

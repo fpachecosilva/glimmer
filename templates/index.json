@@ -15,25 +15,17 @@
         "banner_7Qyq8Q": {
           "type": "banner",
           "settings": {
-            "desk_img": "shopify://shop_images/hero1.jpg",
-            "mob_img": "shopify://shop_images/drink_1.jpg",
-            "banner_link": "",
-            "title": "Prazer e bem-estar podem, sim, andar juntos.",
-            "subtitle": "Descubra as bebidas que equilibram sabor, leveza e autenticidade. Viva o melhor dos dois mundos, sem culpa e com muito brilho",
-            "text_btn": "Quero viver esse equilíbrio",
-            "link_btn": "shopify://products/sweet-ginger"
+            "desk_img": "shopify://shop_images/hero-desk.jpg",
+            "mob_img": "shopify://shop_images/hero-mobile.jpg",
+            "banner_link": ""
           }
         },
         "banner_iAztic": {
           "type": "banner",
           "settings": {
-            "desk_img": "shopify://shop_images/hero1.jpg",
-            "mob_img": "shopify://shop_images/drink_1.jpg",
-            "banner_link": "",
-            "title": "Slide 02",
-            "subtitle": "texto 2",
-            "text_btn": "Botão 2",
-            "link_btn": "shopify://products/sweet-ginger-3"
+            "desk_img": "shopify://shop_images/hero-desk.jpg",
+            "mob_img": "shopify://shop_images/hero-mobile.jpg",
+            "banner_link": ""
           }
         }
       },
@@ -45,9 +37,7 @@
       "settings": {
         "main_banner_loop": false,
         "main_banner_autoplay": false,
-        "main_banner_autoplay_time": 5,
-        "title_color": "#fff9e9",
-        "text_color": "#fff9e9"
+        "main_banner_autoplay_time": 5
       }
     },
     "marquee_tCV6RL": {
@@ -661,15 +651,15 @@
                 },
                 "add-to-cart": {
                   "type": "add-to-cart",
-                  "disabled": true,
                   "static": true,
                   "settings": {
-                    "style_class": "button-secondary"
+                    "style_class": "button"
                   },
                   "blocks": {}
                 },
                 "accelerated-checkout": {
                   "type": "accelerated-checkout",
+                  "disabled": true,
                   "static": true,
                   "settings": {},
                   "blocks": {}

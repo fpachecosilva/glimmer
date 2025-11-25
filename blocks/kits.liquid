@@ -241,12 +241,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const economia = subtotal - total;
 		const totalAnterior = cart.original_total_price / 100;
 		const totalDescontos = cart.total_discount / 100;
-		const temDesconto = cart.total_discount > 0;
-
-		{% comment %} console.log(cart.original_total_price) {% endcomment %}
+		const temDesconto = cart.total_discount > 0;		
 		
-		
-    totalBox.innerHTML = `R$ ${total.toFixed(2).replace(".", ",")}`;
+    totalBox.innerHTML = `R$ ${total.toFixed(2).replace(".", ",")}`;    
     
 		// --- PREÇO ANTERIOR ---
 		if (temDesconto) {
@@ -280,8 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelectorAll(".kit-input").forEach(input => {
     input.addEventListener("change", async () => {
-      const qty = Number(input.value);
-			
+      const qty = Number(input.value);			
 
       if (shopifyQtyInput) {
         shopifyQtyInput.value = qty;
@@ -289,14 +285,16 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
 			if (loader) loader.style.display = "block";
+      totalAnteriorBox.style.display = "none";
+      totalDescontosBox.style.display = "none";      
 
-			try {
+			try {        
 				const result = await simulateCheckout(qty);
 				renderValues(result);
 			} finally {
 				setTimeout(() => {
 					if (loader) loader.style.display = "none";
-				}, 150);
+				}, 150);        
 			}				
 		});
   });
